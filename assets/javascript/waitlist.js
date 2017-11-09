@@ -34,8 +34,8 @@ function seatGuests() {
 }
 
 //todo
-function clearGuests() {
-
+function clearGuests(index) {
+    waitList.splice(index, 1);
 }
 
 
@@ -43,4 +43,7 @@ addCustomer("david", 1, 30);
 addCustomer("robinson", 10);
 addCustomer("davidson", 200);
 
+displayList();
+
+clearGuests(1);
 displayList();
