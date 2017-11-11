@@ -17,6 +17,7 @@
                             <div class="city"><small><small>CITY:</small></small> Mission Viejo</div>
                             <div class="temp" id="currenttemp"><small>CURRENT TEMP:</small><small>F</small></div>
                             <div class="weatherdesc" id="currentweatherdesc"><small></small></div>
+                            <img id="imgid" src="http://openweathermap.org/img/w/01d.png" height=30px width=30px>
                             <div>&nbsp;</div>
                             <div class="popup" onclick="forecastbutton()">Click me for tomorrow's forecast!
                                     <span class="popuptext" id="forecast-appear-here">forecast</span>
@@ -41,10 +42,27 @@ var myVar = setInterval(function(){ currentWeather() }, 1000);
 
 function currentWeather(){
  
- var date = new Date();
-console.log(date);
+var date = new Date();
+var dd = date.getDate();
+var mm = date.getMonth()+1; //January is 0!
+var yyyy = date.getFullYear();
+
+if(dd<10) {
+    dd = '0'+dd
+} 
+
+if(mm<10) {
+    mm = '0'+mm
+} 
+
+today = mm + '/' + dd + '/' + yyyy;
+
+hours=date.getHours(); // => 9
+minutes=date.getMinutes(); // =>  30
+seconds=date.getSeconds(); // => 51
+time=hours+ ':' +minutes+ ':' +seconds;
 var targetDate = document.getElementById("currentts");
-targetDate.innerHTML = date;  
+targetDate.innerHTML = today+ " "+time;  
 
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?zip=92691,us&units=imperial&cnt=3&APPID=9cc1ac9e103bec3fdc87b1ee74880bba";
     $.ajax({
@@ -59,6 +77,10 @@ var queryURL = "http://api.openweathermap.org/data/2.5/weather?zip=92691,us&unit
       var targetDiv03 = document.getElementById("currentweatherdesc");
       targetDiv03.innerHTML = response.weather[0].description;
 
+      icon_id=response.weather[0].icon ;
+    
+      $("#imgid").attr("src", "http://openweathermap.org/img/w/"+icon_id+".png");
+      
     });
 };
 
@@ -87,9 +109,6 @@ var queryURL = "http://api.openweathermap.org/data/2.5/weather?zip=92691,us&unit
     
 
     };
-</script>
-
-
 </script>
 
 </body>
