@@ -1,5 +1,9 @@
 #page1{
-    background-color: black;
+    background: url("https://www.vitaliberata.co.uk/blog/wp-content/uploads/2017/07/558749_210_z1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     color: whitesmoke;
 }
 h1{
@@ -12,4 +16,15 @@ h1{
      
         text-indent: 50px;
     
+}
+#exampleModalLong{
+    color: black;
+}
+#adults{
+    height: 30px;
+    width: 50px;
+}
+#children{
+    height: 30px;
+    width: 50px;
 }
