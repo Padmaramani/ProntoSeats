@@ -22,9 +22,34 @@ h1{
 }
 #adults{
     height: 30px;
-    width: 50px;
+    width: 80px;
 }
 #children{
     height: 30px;
-    width: 50px;
+    width: 80px;
+}
+#container {
+	position: relative;
+	top: 30px;
+	outline:2px solid #000;
+	font-size: 0;
+	margin:auto;
+	height:200px;
+	width:300px;
+	padding: 0;
+	border: none;
+}
+
+.grid {
+	margin:0;
+	padding:0;
+	border:none;
+	outline:1px solid #000;
+	display:inline-block;
+}
+#info{
+font-size: 10px;
+}
+#modals{
+    color: black;
 }

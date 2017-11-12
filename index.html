@@ -8,83 +8,213 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
     crossorigin="anonymous">
-    <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+<link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/custom.css" />
 
 <body id='page1'>
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <span class="border">
                     Weather
                 </span>
             </div>
             <div class="col-sm-9">
-<h1>Resturant Name</h1>
+                <h1>Resturant Name</h1>
             </div>
 
         </div>
         <br>
-        
+
         <div class="row">
             <div class="col-sm-3">
-                   
-                            
-<h3>Party Name:</h3>
-                <input id='guestName' type='text'>
+
+
+
+                <input id='guestName' type='text' placeholder="Party Name">
+                <br>
+                <br>
+
+                <p>
+                    <input id='adults' type="number" placeholder="Adults"> </p>
+                <p id='child'>
+                    <input id='children' type="number" placeholder='Children'>
+                </p>
+                <br>
+
+
+                <button id='wait' class="btn btn-primary">Wait list</button>
+
+                <button id='tables' type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" data-target=".bd-example-modal-lg">
+                    Assign Table
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Assign Tables</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <wrapper id='info'>
+                                                <p id='guestinfo'></p>
+                                            </wrapper>
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <div id="container">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-primary">Seat Guests</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <br>
                 
-       <p > Adults:<input id='adults' type="number" > </p>   <p  id='child'> Children: <input id='children' type="number"></p>
-       <br>
-       
-       
-       <button id='wait' class="btn btn-primary">Wait list</button>
-        
-        <button id='tables' type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-                Assign Table
-              </button>
-              
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Assign Tables</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                    <button id 'seewait'> Open WaitList </button>
+                    <br>
+                    <br>
+
+                    <!-- Button trigger modal -->
+                    <button  id='serverlist' type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Server Sign In
+                    </button>
+
+                    <!-- Modal -->
+                    <wrapper id='modals'>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Sign In
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <wrapper id='serversignin' >
+<p> <input id='servername' type="text" placeholder='Name' ></p>
+<p><input id='serverpin' type'number' placeholder="Pin Code"></p>
+<p><input id='timeoff' type'time' placeholder="Time Off"></p>
+                                    </wrapper>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button id='signin'  type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinlist">Sign In</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                      <wrapper >
-                          <p id ='guestinfo'></p>
-                      </wrapper>
-                    </div>
-                    <div class="modal-footer">
-                      
-                      <button type="button" class="btn btn-primary">Seat Guests</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </wrapper>
+                     
+                    
+    
+                        <!-- Modallist -->
+                        <wrapper id='modals'>
+                        <div class="modal fade" id="signinlist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Servers on Shift
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <wrapper id='serverlist' >
+                                                <table class="table">
+                                                        <thead>
+                                                          <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Server Name</th>
+                                                            <th scope="col">Time In</th>
+                                                            <th scope="col">Time Off</th>
+                                                          </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                          <tr>
+                                                            <th scope="row">1</th>
+                                                            <wrapper id =list1>
+                                                            
+
+                                                            <td></td>
+                                                            <td>@mdo</td>
+                                                        </wrapper>
+                                                          </tr>
+                                                        
+                                                          <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Jacob</td>
+                                                            <td>Thornton</td>
+                                                            <td>@fat</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Larry</td>
+                                                            <td>the Bird</td>
+                                                            <td>@twitter</td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                        </wrapper>
+                                    </div>
+                                    <div class="modal-footer">
+                                        
+                                        <button id='' type="button" class="btn btn-primary"  data-dismiss="modal" aria-label="Close">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </wrapper>
 
             </div>
-            <div class="col-sm-10">
-<h4 id ='test'></h4>
+            <div class="col-sm-9">
+                <h4 id='test'></h4>
             </div>
 
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-sm-2">
+                <div  class="fixed-bottom"><br>
+                    <wrapper id='bottom'>
 
-            </div>
-            <div class="col">
+                </wrapper>
 
+                </div>
             </div>
-            <div class="col">
-            </div>
+
+
+
         </div>
+
+
+
+
+
+
+
+
     </div>
 
 
@@ -105,9 +235,8 @@
 
 
 
-
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-
+<script type="text/javascript" src="assets/javascript/dateformat.js"></script>
     <script type="text/javascript" src="assets/javascript/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
