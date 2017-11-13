@@ -1,0 +1,61 @@
+#page1{
+    background: url("https://www.vitaliberata.co.uk/blog/wp-content/uploads/2017/07/558749_210_z1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: whitesmoke;
+}
+h1{
+    margin: 0;
+    text-align: center;
+    
+    justify-content: center ;
+}
+#chid{
+     
+        text-indent: 50px;
+    
+}
+#assigntable{
+    color: black;
+}
+#adults{
+    height: 30px;
+    width: 80px;
+}
+#children{
+    height: 30px;
+    width: 80px;
+}
+#container {
+	position: relative;
+	top: 30px;
+	outline:2px solid #000;
+	font-size: 0;
+	margin:auto;
+	height:200px;
+	width:300px;
+	padding: 0;
+	border: none;
+}
+
+.grid {
+	margin:0;
+	padding:0;
+	border:none;
+	outline:1px solid #000;
+	display:inline-block;
+}
+#info{
+font-size: 10px;
+}
+#modals{
+    color: black;
+}
+.restTables{
+    width: 50px;
+}
+#modal2{
+    color: black;
+}

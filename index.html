@@ -1,18 +1,248 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Pronto Seats </title>
 </head>
 <link rel="stylesheet" href="assets/css/reset.css" />
+
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-crossorigin="anonymous">
+    crossorigin="anonymous">
+<link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/custom.css" />
 
-<body>
+<body id='page1'>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <span class="border">
+                    Weather
+                </span>
+            </div>
+            <div class="col-sm-9">
+                <h1>Resturant Name</h1>
+            </div>
+
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-3">
+
+
+
+                <input id='guestName' type='text' placeholder="Party Name">
+                <br>
+                <br>
+
+                <p>
+                    <input id='adults' type="number" placeholder="Adults"> </p>
+                <p id='child'>
+                    <input id='children' type="number" placeholder='Children'>
+                </p>
+                <br>
+
+
+
+                <button id='wait' class="btn btn-primary">Add to Wait list</button>
+
+                <button id='tables' type="button" class="btn btn-primary" data-toggle="modal" data-target="#assigntable" data-target=".bd-example-modal-lg">
+                    Assign Table
+                </button>
+
+                <!-- Modal 1-->
+                <div class="modal fade" id="assigntable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Assign Tables</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <wrapper id='info'>
+                                                <p id='guestinfo'></p>
+                                            </wrapper>
+                                        </div>
+
+                                        <div class="col-md-9">
+                                        <wrapper id='opentables'>
+                                            
+                                        </wrapper>
+                                        </div>
+                                    </div>
 
 
 
 
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+
+                                <button  id='choose' type="button" class="btn btn-primary" data-toggle="modal" data-target="#chooseserver">Choose Server</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+               
+
+  
+  <!-- Modal 2-->
+  <wrapper id='modal2'>
+  <div class="modal fade" id="chooseserver" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Server</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                   
+                    <th scope="col">First Name</th>
+                    <th scope="col">Time Off</th>
+                    
+                  </tr>
+                </thead>
+                <tbody id='availableservers' >
+                        
+                 
+               
+                </tbody>
+              </table>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Seat Guest</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</wrapper>
+                <br>
+                <br>
+                
+                    <button id 'seewait'> Open WaitList </button>
+                    <br>
+                    <br>
+
+                    <!-- Button trigger modal -->
+                    <button  id='serverlist' type="button" class="btn btn-primary" data-toggle="modal" data-target="#serverinput">
+                        Server Sign In/Sign Out
+                    </button>
+
+                    <!-- Modal -->
+                    <wrapper id='modals'>
+                    <div class="modal fade" id="serverinput" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Sign In/Sign Off
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <wrapper id='serversignin' >
+<p> <input id='servernames' type="text" placeholder='Name' ></p>
+<p><input id='serverpin' type="number" placeholder="Pin Code"></p>
+<p><input id='timeoff' type='time' step='60' placeholder="Time Off"></p>
+                                    </wrapper>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id='signout' type="button" class="btn btn-secondary"  data-toggle="modal"data-target="#signinlist" >Sign Off</button>
+                                    <button id='signin'  type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinlist">Sign In</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </wrapper>
+                <br><br>
+                <button id='signin'  type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinlist">Available Servers</button>
+                     
+                    
+    
+                        <!-- Modallist -->
+                        <wrapper id='modals'>
+                        <div class="modal fade" id="signinlist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Servers on Shift
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <wrapper id='serverlist' >
+                                                <table class="table">
+                                                        <thead>
+                                                          <tr>
+                                                            
+                                                            <th scope="col">Server Name</th>
+                                                            <th scope="col">Time In</th>
+                                                            <th scope="col">Time Off</th>
+                                                          </tr>
+                                                        </thead>
+                                                        <tbody id='list1'>
+                                                         
+                                                        </tbody>
+                                                      </table>
+                                        </wrapper>
+                                    </div>
+                                    <div class="modal-footer">
+                                        
+                                        <button id='' type="button" class="btn btn-primary"  data-dismiss="modal" aria-label="Close">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </wrapper>
+
+            </div>
+            <div class="col-sm-9" >
+               <wrapper class='seats'>
+
+               </wrapper>
+              
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div  class="fixed-bottom"><br>
+                    <wrapper id='bottom'>
+
+                </wrapper>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
 
 
 
@@ -34,8 +264,8 @@ crossorigin="anonymous">
 
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    
-        <script type="text/javascript" src="assets/javascript/index.js"></script>
+<script type="text/javascript" src="assets/javascript/dateformat.js"></script>
+    <script type="text/javascript" src="assets/javascript/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
@@ -44,4 +274,5 @@ crossorigin="anonymous">
         crossorigin="anonymous"></script>
 
 </body>
+
 </html>
