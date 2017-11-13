@@ -1,5 +1,5 @@
-var waitList = [];
 
+var waitList = [];
 function customer(nm, numAdults, numChildren) {
     this.name = nm;
     this.numberAdults = numAdults;

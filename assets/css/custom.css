@@ -20,9 +20,9 @@ h1{
 #assigntable{
     color: black;
 }
-#adults{
+#party_size{
     height: 30px;
-    width: 80px;
+    width: 90px;
 }
 #children{
     height: 30px;
@@ -57,5 +57,8 @@ font-size: 10px;
     width: 50px;
 }
 #modal2{
+    color: black;
+}
+#openwaitlist{
     color: black;
 }
