@@ -1,4 +1,4 @@
-var  guestName
+var guestName
 var numAdults;
 var numChild;
 var guestinfo;
@@ -7,86 +7,61 @@ var tables;
 var serverName;
 var serverPin;
 var timeOff;
-server=[];
+var server = [];
+var x = 1;
+var y =10;
+var tableNum= 1;
+var seat;
+var dt = new Date();
 
- var dt = new Date();
+var time = dt.getHours() + ":" + dt.getMinutes();
+//    dt.format('shorttime')
 
-    var time = dt.getHours() + ":" + dt.getMinutes();
-   dt.format('shorttime')
+//tIn = time in.
+//tOut = time out
+$('#bottom').append(time);
 
-   //tIn = time in.
-   //tOut = time out
-function Server(name,tIn,pin,tOut){
-this.name =name;
-this.timeIn = tIn;
-this.serverPin=pin;
-this.timeOut =tOut;
+function Server(name, tIn, pin, tOut) {
+    this.name = name;
+    this.timeIn = tIn;
+    this.serverPin = pin;
+    this.timeOut = tOut;
 
-this.addToList =function(){
     
-  
 
 };
 
-};
+function Guestinfo(name, aduts, child) {
+    this.guestName = name;
+    this.numAdults = aduts;
+    this.numChild = child;
 
-function Guestinfo(name,aduts,child){
-    this.guestName=name;
-    this.numAdults=aduts;
-    this.numChild=child;
+    this.setguestinfo = function () {
 
-    this.setguestinfo = function(){
+        guestinfo = 'Guest Name: ' + this.guestName + '<br>' + 'Adults: ' + this.numAdults + '<br>' + 'Children: ' + this.numChild;
 
-        guestinfo= 'Guest Name: ' + this.guestName +'<br>'+ 'Adults: ' + this.numAdults+ '<br>'+ 'Children: ' + this.numChild;
-        
-      
+
     };
 
-    this.assignTable = function(){
+    this.showHost = function () {
         $('#guestinfo').html(guestinfo)
-    }
+    };
 };
 
-function pushWaitlist(){
+function pushWaitlist() {
     guestName = $('#guestName').val();
     numAdults = $('#adults').val();
-    numChild =$('#children').val();
-    var newguest = new Guestinfo(guestName,numAdults,numChild);
-    
-     $('#guestName').val('');
+    numChild = $('#children').val();
+    var newguest = new Guestinfo(guestName, numAdults, numChild);
 
-window.location.assign('waitlist.html');
-
-};
-function openTables(){
-    guestName = $('#guestName').val();
-    numAdults = $('#adults').val();
-    numChild =$('#children').val();
-    var newguest = new Guestinfo(guestName,numAdults,numChild);
-    newguest.setguestinfo();
-    newguest.assignTable();
-    
-    $('#children').val('');
     $('#guestName').val('');
-    $('#adults').val('');
-     
-    createGrid(4,10);
-}
-$('#wait').on('click',function(){
-    
-    pushWaitlist();
-    newguest.setguestinfo();
 
+    window.location.assign('waitlist.html');
 
-});
-$('#tables').on('click',function(){
-   openTables();
-});
-$('#serverlist').on('click',function(){
-    
-})
+};
+
 // function that builds a grid in the "container"
-function createGrid(serversnum,tables) {
+function createGrid(serversnum, tables) {
     for (var rows = 0; rows < serversnum; rows++) {
         for (var columns = 0; columns < tables; columns++) {
             $("#container").append("<div class='grid'></div>");
@@ -94,22 +69,129 @@ function createGrid(serversnum,tables) {
     };
     $(".grid").width(200);
     $(".grid").height(200);
+
+};
+
+function openTables() {
+    guestName = $('#guestName').val();
+    numAdults = $('#adults').val();
+    numChild = $('#children').val();
+    var newguest = new Guestinfo(guestName, numAdults, numChild);
+    newguest.setguestinfo();
+    newguest.showHost();
+
+    $('#children').val('');
+    $('#guestName').val('');
+    $('#adults').val('');
+
     
 };
-function signInServer (){
-    serverName =  $('#servername').val();
-serverPin = $('#serverpin').val();
-timeOff=$('#timeoff').val();
- var  newserver = new Server(serverName,time,serverPin,timeOff);
- var addName = $('<td>');
- addName.addClass('serverNamesIn');
-  addName.append(newserver.name);
-  $('#list1').append(addName);
- 
-}
-$('#signin').on('click',function(){
-    $('#exampleModal').modal('hide')
-    signInServer();
+
+$('#wait').on('click', function () {
+
+    pushWaitlist();
+    newguest.setguestinfo();
+
+
+});
+$('#tables').on('click', function () {
+    openTables();
+});
+
+
+function signInServer() {
+
+    serverName = $('#servernames').val();
+    serverPin = $('#serverpin').val();
+    timeOff = $('#timeoff').val();
+
+    var newserver = new Server(serverName, time, serverPin, timeOff);
+server.push(newserver)
+
+    var checkIn = $('<tr>');
+    checkIn.attr('id', serverName);
     
-})
-$('#bottom').append(time)
+    // checkIn.append('<th scope="row">' + x);
+
+    checkIn.append('<td serverinfo=' + serverName.name +'>' + newserver.name + '</td>');
+
+    checkIn.append('<td >' + newserver.timeIn + '</td>');
+    checkIn.append('<td serverinfo=' + newserver.name + '>' + newserver.timeOut + '</td>');
+
+    $('#list1').append(checkIn);
+
+
+    serverName = $('#servernames').val('');
+    serverPin = $('#serverpin').val('');
+    timeOff = $('#timeoff').val('');
+
+};
+
+function signServerOut() {
+    serverName = $('#servernames').val();
+    serverPin = $('#serverpin').val();
+    timeOff = $('#timeoff').val();
+    $('#' + serverName).remove();
+    
+    serverName = $('#servernames').val('');
+    serverPin = $('#serverpin').val('');
+    timeOff = $('#timeoff').val('');
+};
+
+$('#signin').on('click', function () {
+    $('#serverinput').modal('hide');
+    signInServer();
+
+});
+
+$('body').on('click', '#signout', function () {
+    $('#serverinput').modal('hide')
+    signServerOut();
+});
+
+$('#seewait').on('click', function () {
+    window.location.assign('waitlist.html');
+});
+
+function openResturant(){
+$('#opentables').html('');
+
+ for (i = 0; i < y; i++){
+    y++;
+   createTables= $('<img class="restTables"  src="assets/images/table.ico" tclick='+tableNum+ '><span class="badge badge-secondary">' + tableNum +'</span> </img>' );
+   
+   $('#opentables').append(createTables);
+tableNum++;
+};
+};
+openResturant();
+$('body').on('click','.restTables',function(){
+     seat = $(this).attr('tclick');
+   console.log(seat);
+});
+$('#choose').on('click',function(){
+    $('#assigntable').modal('hide');
+$('#availableservers').html(' ');
+for(i=0; i < server.length; i++){
+    
+    var showServers = $('<tr>');
+    showServers.attr('id',x);
+    showServers.attr('pickserver', server[i].name);
+
+x++;
+    showServers.append('<td>' + server[i].name + '</td>');
+
+    showServers.append('<td>' + server[i].timeOut + '</td>');
+
+$('#availableservers').append(showServers);
+
+};
+});
+$('body').on('click','.',function(){
+//   var add=  $(this).attr('.server-choice');
+//   $('.serverchoice').addClass('table-primary')
+  
+
+  $( ".server-choice" ).addClass( "table-primary" );
+  $('.server-choice table-primary').removeClass( ".server-choice" );
+});
