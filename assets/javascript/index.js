@@ -13,6 +13,7 @@ var y =10;
 var tableNum= 1;
 var seat;
 var waitList = [];
+var guests =[];
 var dt = new Date();
 
 var time = dt.getHours() + ":" + dt.getMinutes();
