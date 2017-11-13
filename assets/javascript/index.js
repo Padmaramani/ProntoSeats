@@ -1,4 +1,4 @@
-var guestName
+var guestName;
 var numAdults;
 var numChild;
 var guestinfo;
@@ -136,8 +136,8 @@ function signServerOut() {
     for(i=0; i< server.length; i++){
         if(server[i].name === serverName) {
     server.splice(i,1);
-        }
-        } 
+        };
+        } ;
    
     serverName = $('#servernames').val('');
     serverPin = $('#serverpin').val('');
@@ -170,10 +170,10 @@ function NewTable(num,seats){
 }
 function openResturant(){
 $('#opentables').html('');
-
+// todo create table objects 
  for (i = 0; i < y; i++){
     
-   createTables= $('<img class="restTables"  src="assets/images/table.ico" tclick='+ t+ '><span class="badge badge-secondary">' + tableNum +'</span> </img>' );
+   createTables= $('<img class="restTables"  src="assets/images/table.ico" tclick='+ tableNum+ '><span class="badge badge-secondary">' + tableNum +'</span> </img>' );
    
    $('#opentables').append(createTables);
 tableNum++;
