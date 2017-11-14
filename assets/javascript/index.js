@@ -13,7 +13,7 @@ var y =10;
 var tableNum= 1;
 var seat;
 var waitList = [];
-var guests =[];
+
 var tableArray=[];
 var numOTables = 15;
 var createdServerNGuest=[];
@@ -125,10 +125,8 @@ function openTables() {
     newguest.setguestinfo();
     newguest.showHost();
 
-    $('#children').val('');
     $('#guestName').val('');
-    $('#adults').val('');
-
+    $('#party_size').val('');
     
 };
 
@@ -263,24 +261,27 @@ $('#server_select').append(showServers);
 
 };
 });
-function TableNServer(server,table){
+function TableNServer(server,table,guest,party){
     this.serversSelect = server;
     this.tableSelect = table;
+    this.theNameGuest=guest;
+    this.thePartySize=party;
 
-   this.displaySeatingInfo = function(){
-       var display=$('<p> The </p>');
-       $('#guest_server_info').html(display);
-   };
+//    this.displaySeatingInfo = function(){
+//        var display=$('<p> The' + theNameGuest +' party will be served by <br> '+ serversSelect+'<br>'+ 'at <br>' + tableSelect+ '</p>');
+//        $('#guest_server_info').html(display);
+//    };
 };
 
 function seatingTheGuest(){
     $("#assigntable").modal("hide");
     var selectedServer = $("#server_select").val();
     var selectedTable = $('#select_table').val();
-var TableAndGuestAndServer = new TableNServer(selectedServer,selectedTable);
+var TableAndGuestAndServer = new TableNServer(selectedServer,selectedTable,guestArray[0].guestName,guestArray[0].partysize);
 // createdServerNGuest.push(TableAndGuestAndServer);
-
-        $('#guest_server_info').append(createdServerNGuest);
+var display=$('<p> The' + guestArray[0].guestName +' party will be served by <br> '+ selectedServer +'<br>'+ 'at <br>' + selectedTable+ '</p>');
+$('#guest_server_info').html(display);
+        
 
 };
 
@@ -290,7 +291,7 @@ var TableAndGuestAndServer = new TableNServer(selectedServer,selectedTable);
 
 $('#table_server').on('click',function(){
    seatingTheGuest();
-
+// TableAndGuestAndServer.displaySeatingInfo();
 // for(i=0; i< server.length; i++){
 //     if(server[i].name === selectedServer) {
 // var serverdata = server.detach(i,1);
