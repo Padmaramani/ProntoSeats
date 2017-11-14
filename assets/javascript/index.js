@@ -17,6 +17,7 @@ var guests =[];
 var tableArray=[];
 var numOTables = 15;
 var createdServerNGuest=[];
+var guestArray=[];
 var dt = new Date();
 var t = 1;
 
@@ -120,6 +121,7 @@ function openTables() {
     guestName = $('#guestName').val();
     partysize = $('#party_size').val();
     var newguest = new Guestinfo(guestName, partysize);
+    guestArray.push(newguest);
     newguest.setguestinfo();
     newguest.showHost();
 
@@ -160,6 +162,10 @@ function signInServer() {
     var newserver = new Server(serverName, time, serverPin, timeOff);
 server.push(newserver)
 
+
+
+
+
     var checkIn = $('<tr>');
     checkIn.attr('id', serverName);
     
@@ -171,8 +177,15 @@ server.push(newserver)
     checkIn.append('<td serverinfo=' + newserver.name + '>' + newserver.timeOut + '</td>');
 
     $('#list1').append(checkIn);
+    for(i =0;i < server.length;i++){
+var displayServerMain = $('<table class="table">');
+displayServerMain.attr('class',server[i].name);
 
+displayServerMain.append('<thead>'+'<tr>' + '<th scope="col" id=' + server[i].name +'>'+ server[i].name+'  ' + server[i].timeOut+'</th'+ '</tr>' +'</thead>');
 
+$('.seats').html(displayServerMain);
+
+    };
     serverName = $('#servernames').val('');
     serverPin = $('#serverpin').val('');
     timeOff = $('#timeoff').val('');
@@ -216,7 +229,7 @@ $('body').on('click', '#signout', function () {
 });
 
 $('#seewait').on('click', function () {
-    window.location.assign('waitlist.html');
+    
 });
 
 
@@ -248,16 +261,34 @@ $('#server_select').append(showServers);
 function TableNServer(server,table){
     this.serversSelect = server;
     this.tableSelect = table;
+
+   this.displaySeatingInfo = function(){
+       var display=$('<p> The </p>');
+       $('#guest_server_info').html(display);
+   };
 };
-$('#table_server').on('click',function(){
+
+function seatingTheGuest(){
+    $("#assigntable").modal("hide");
     var selectedServer = $("#server_select").val();
     var selectedTable = $('#select_table').val();
-var createTableNServer = new TableNServer(selectedServer,selectedTable);
-createdServerNGuest.push(createTableNServer);
-console.log(createdServerNGuest);
+var TableAndGuestAndServer = new TableNServer(selectedServer,selectedTable);
+// createdServerNGuest.push(TableAndGuestAndServer);
+
+        $('#guest_server_info').append(createdServerNGuest);
+
+};
+
+
+
+
+
+$('#table_server').on('click',function(){
+   seatingTheGuest();
+
 // for(i=0; i< server.length; i++){
 //     if(server[i].name === selectedServer) {
 // var serverdata = server.detach(i,1);
 //     };
 //     } ;
-})
+});

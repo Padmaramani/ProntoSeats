@@ -74,22 +74,22 @@
 
                                         <div class="col-md-9">
 
-                                            <form >
+                                            <form>
                                                 <div class="form-group">
                                                     <label for="exampleFormControlSelect1">Select Server</label>
                                                     <select class="form-control" id="server_select">
-                                                       
+
                                                     </select>
                                                 </div>
-                                            
+
                                                 <div class="form-group">
                                                     <label for="exampleFormControlSelect1">Select Table</label>
                                                     <select class="form-control" id="select_table">
-                                                       
+
                                                     </select>
                                                 </div>
-                                                
-                                            <!-- </form> -->
+
+
                                         </div>
                                     </div>
 
@@ -99,19 +99,43 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <input  id ='table_server' class="btn btn-primary"  value="Seat Guest">
+                                <input type='button' id='table_server' class="btn btn-primary" value="Seat Guest" data-toggle="modal" data-target="#guest_server">
                             </div>
 
-                        </form>
+                            </form>
 
                         </div>
 
                     </div>
-                    
+
                 </div>
             </div>
         </div>
 
+  <!-- Modal shows the guest and server and table number -->
+  <wrapper id='modals'>
+    <div class="modal fade" id="guest_server" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Guest Table</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <wrapper id='guest_server_info'>
+
+            </wrapper>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </wrapper>
 
 
         <!-- Modal 2
@@ -204,7 +228,7 @@
             Server Sign In/Sign Out
         </button>
 
-        <!-- Modal -->
+        <!-- Modal Sign in/ Off-->
         <wrapper id='modals'>
             <div class="modal fade" id="serverinput" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -229,20 +253,21 @@
                             </wrapper>
                         </div>
                         <div class="modal-footer">
-                            <button id='signout' type="button" class="btn btn-secondary" data-toggle="modal" data-target="#signinlist">Sign Off</button>
-                            <button id='signin' type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinlist">Sign In</button>
+                            <button id='signout' type="button" class="btn btn-secondary">Sign Off</button>
+                            <button id='signin' type="button" class="btn btn-primary">Sign In</button>
                         </div>
                     </div>
                 </div>
             </div>
         </wrapper>
+
         <br>
         <br>
         <button id='signin' type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinlist">Available Servers</button>
 
 
 
-        <!-- Modallist -->
+        <!-- Modalsign in list -->
         <wrapper id='modals'>
             <div class="modal fade" id="signinlist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -279,13 +304,15 @@
             </div>
         </wrapper>
 
-    </div>
-    <div class="col-sm-9">
-        <wrapper class='seats'>
 
-        </wrapper>
 
-    </div>
+
+        <div class="col-sm-9">
+            <wrapper class='seats'>
+               
+            </wrapper>
+
+        </div>
 
     </div>
     <div class="row">
@@ -302,7 +329,6 @@
 
 
     </div>
-
 
 
 
