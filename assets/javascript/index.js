@@ -279,7 +279,7 @@ function seatingTheGuest(){
     var selectedTable = $('#select_table').val();
 var TableAndGuestAndServer = new TableNServer(selectedServer,selectedTable,guestArray[0].guestName,guestArray[0].partysize);
 // createdServerNGuest.push(TableAndGuestAndServer);
-var display=$('<p> The' + guestArray[0].guestName +' party will be served by <br> '+ selectedServer +'<br>'+ 'at <br>' + selectedTable+ '</p>');
+var display=$('<p> The' + guestArray[0].guestName +' party will be served by <br> '+ selectedServer +'<br>'+ 'at table <br>' + selectedTable+ '</p>');
 $('#guest_server_info').html(display);
         
 
