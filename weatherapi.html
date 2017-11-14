@@ -70,7 +70,7 @@ var queryURL = "http://api.openweathermap.org/data/2.5/weather?zip=92691,us&unit
       method: "GET",
       crossDomain: true
     }).done(function(response) {
-      
+      console.log(response);
       var targetDiv01 = document.getElementById("currenttemp");
       targetDiv01.innerHTML = response.main.temp+"F";
      
@@ -92,7 +92,7 @@ var queryURL = "http://api.openweathermap.org/data/2.5/weather?zip=92691,us&unit
       method: "GET",
       crossDomain: true
     }).done(function(response) {
-
+  
       var topicDiv = $("<div class='forecast01' id='forecast01'>");
       var p = $("<p>").text("Date: "+response.list[0].dt_txt);
       var p1 = $("<p1>").text("Temperature: "+response.list[0].main.temp);
