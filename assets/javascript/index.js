@@ -14,7 +14,11 @@ var tableNum= 1;
 var seat;
 var waitList = [];
 var guests =[];
+var tableArray=[];
+var numOTables = 15;
+var createdServerNGuest=[];
 var dt = new Date();
+var t = 1;
 
 var time = dt.getHours() + ":" + dt.getMinutes();
 //    dt.format('shorttime')
@@ -22,6 +26,26 @@ var time = dt.getHours() + ":" + dt.getMinutes();
 //tIn = time in.
 //tOut = time out
 $('#bottom').append(time);
+
+function NewTable(num,seats){
+    this.tableNum =num;
+    this.empty =seats;
+};
+function openResturant(){
+    
+    for(i =0; i< numOTables; i++){
+        
+        var tablesInRest = new NewTable(t,4);
+    tableArray.push(tablesInRest);
+        t++;
+    }
+    // todo create table objects 
+    for(i =0; i < tableArray.length; i++)
+    $('#select_table').append('<option id='+ x +'picserver='+ '>' + tableArray[i].tableNum + '</option>');
+    };
+    
+
+openResturant();
 
 function Server(name, tIn, pin, tOut) {
     this.name = name;
@@ -114,6 +138,16 @@ $('#wait').on('click', function () {
 });
 $('#tables').on('click', function () {
     openTables();
+    $('#server_select').empty();
+    for(i=0; i < server.length; i++){
+        
+        
+    
+    
+   $('#server_select').append('<option id='+ x +'picserver='+ '>' + server[i].name + '</option>');
+        x++;
+     
+    };
 });
 
 
@@ -129,7 +163,7 @@ server.push(newserver)
     var checkIn = $('<tr>');
     checkIn.attr('id', serverName);
     
-    // checkIn.append('<th scope="row">' + x);
+    
 
     checkIn.append('<td serverinfo=' + serverName.name +'>' + newserver.name + '</td>');
 
@@ -185,22 +219,8 @@ $('#seewait').on('click', function () {
     window.location.assign('waitlist.html');
 });
 
-function NewTable(num,seats){
-    this.tableNum =num;
-    this.empty =seats;
-}
-function openResturant(){
-$('#opentables').html('');
-// todo create table objects 
- for (i = 0; i < y; i++){
-    
-   createTables= $('<img class="restTables"  src="assets/images/table.ico" tclick='+ tableNum+ '><span class="badge badge-secondary">' + tableNum +'</span> </img>' );
-   
-   $('#opentables').append(createTables);
-tableNum++;
-};
-};
-openResturant();
+
+
 
 $('body').on('click','.restTables',function(){
      seat = $(this).attr('tclick');
@@ -209,30 +229,35 @@ $('body').on('click','.restTables',function(){
 
 $('#choose').on('click',function(){
     $('#assigntable').modal('hide');
-$('#availableservers').empty();
+$('#server2').empty();
 
 
 for(i=0; i < server.length; i++){
     
-    var showServers = $('<tr>');
-    showServers.attr('id',x);
-    showServers.attr('pickserver', server[i].name);
+    
 
-x++;
-    showServers.append('<td>' + server[i].name + '</td>');
 
-    showServers.append('<td>' + server[i].timeOut + '</td>');
+    showServers.append('<option id='+x +'picserver='+ '>' + server[i].name + '</option>');
+    x++;
+    // showServers.append('<option>' + server[i].timeOut + '</option>');
 
-$('#availableservers').append(showServers);
+$('#server_select').append(showServers);
 
 };
 });
-$('body').on('click','#'+ x,function(){
-    console.log(x);
-//   var add=  $(this).attr('.server-choice');
-//   $('.serverchoice').addClass('table-primary')
-  
-
-  $( ".server-choice" ).addClass( "table-primary" );
-  $('.server-choice table-primary').removeClass( ".server-choice" );
-});
+function TableNServer(server,table){
+    this.serversSelect = server;
+    this.tableSelect = table;
+};
+$('#table_server').on('click',function(){
+    var selectedServer = $("#server_select").val();
+    var selectedTable = $('#select_table').val();
+var createTableNServer = new TableNServer(selectedServer,selectedTable);
+createdServerNGuest.push(createTableNServer);
+console.log(createdServerNGuest);
+// for(i=0; i< server.length; i++){
+//     if(server[i].name === selectedServer) {
+// var serverdata = server.detach(i,1);
+//     };
+//     } ;
+})
