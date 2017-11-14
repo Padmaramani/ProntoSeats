@@ -3,7 +3,28 @@
 <head>
 <title>Page Title</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<style>
+#addressline1 {
+  width:500px;
+  height:200px;
+  float:left;
+}
+
+#addressline2 {
+  width:500px;
+  height:200px;
+  float:left;
+}
+
+#spacingid {
+  width:20px;
+  height:300px;
+  float:left;
+}
+
+</style>
 </head>
+
 <body>
 
     <div class="sourceAddress">
@@ -34,6 +55,7 @@
         </div>
        
       </form>
+      <div id="spacingid"></div>
       <div class="targetAddress">
             <h1>Target Address</h1>
        </div>
@@ -63,7 +85,8 @@
            <button type="submit" class="btn btn-primary" id="buttonClick">Calculate distance</button>
          </form>
 
-     
+         <div id="empty-div"></div>       
+         <div id="empty-div2"></div>   
  </body>
 
 
@@ -119,12 +142,45 @@ $.ajax({
       console.log(response);
       var distance = response.rows[0].elements[0].distance.text;
       var duration = response.rows[0].elements[0].duration.text;
-      console.log(distance);
-      console.log(duration);
+    
+
+      var newDiv = $("<div>");
+      newDiv.text("The distance is:"+distance);
+      newDiv.attr("id","newDiv");
+
+      var newDiv2 = $("<div>");
+      newDiv2.text("The duration is:"+duration);  
+    // We can then  append it to the other div using the same ".append" method.
+    $("#empty-div").append(newDiv);
+    $("#newDiv").append(newDiv2);
+    
+
+      
     });
 
+  var queryURL = "https://maps.googleapis.com/maps/api/directions/json?origin="+origin+"&destination="+destination+"&key=AIzaSyBiIqiufjANe-rskUyfRzenxSacRGBCf80";
+console.log(queryURL);
+$.ajax({
+      url: queryURL,
+      method: "GET",
+      crossDomain: true
+    }).done(function(response) {
+      
+      console.log(response);
+      steps=response.routes[0].legs[0].steps;
+      for (i=0;i<steps.length;i++){
+        console.log(steps[i].html_instructions);
 
 
+        var newDiv = $("<div>");
+        newDiv.html(steps[i].html_instructions+steps[i].distance.text+steps[i].duration.text);  
+    // We can then  append it to the other div using the same ".append" method.
+
+    $("#empty-div2").append(newDiv);
+  
+          
+      }
+    });
 
 });
 </script>
