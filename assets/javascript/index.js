@@ -1,6 +1,6 @@
 var guestName;
+var partysize;
 var numAdults;
-var numChild;
 var guestinfo;
 var serversnum;
 var tables;
@@ -12,6 +12,8 @@ var x = 1;
 var y =10;
 var tableNum= 1;
 var seat;
+var waitList = [];
+var guests =[];
 var dt = new Date();
 
 var time = dt.getHours() + ":" + dt.getMinutes();
@@ -31,14 +33,14 @@ function Server(name, tIn, pin, tOut) {
 
 };
 
-function Guestinfo(name, aduts, child) {
+function Guestinfo(name,size) {
     this.guestName = name;
-    this.numAdults = aduts;
-    this.numChild = child;
+    this.partysize = size;
+    
 
     this.setguestinfo = function () {
 
-        guestinfo = 'Guest Name: ' + this.guestName + '<br>' + 'Adults: ' + this.numAdults + '<br>' + 'Children: ' + this.numChild;
+        guestinfo = 'Guest Name: ' + this.guestName + '<br>' + 'Adults: ' + this.partysize;
 
 
     };
@@ -49,17 +51,35 @@ function Guestinfo(name, aduts, child) {
 };
 
 function pushWaitlist() {
+
+    if(serverName = $('#guestName').val()==''){
+        return;
+    }
     guestName = $('#guestName').val();
-    numAdults = $('#adults').val();
-    numChild = $('#children').val();
-    var newguest = new Guestinfo(guestName, numAdults, numChild);
-
+    partysize = $('#party_size').val();
+    
+    var newguest = new Guestinfo(guestName, partysize);
+    waitList.push(newguest);
     $('#guestName').val('');
+    $('#party_size').val('');
+    $("#waitlist").html('');
+    $('#waitlist_display').empty();
+    for (i = 0; i < waitList.length; i++) {
+    var displayWaitlist = $('<tr>');
+    
+    displayWaitlist.attr('waitlist_display', waitList[i].guestname);
+    displayWaitlist .append('<td>' + waitList[i].guestName + '</td>');
+     displayWaitlist .append('<td>' + waitList[i].partysize + '</td>');
+     displayWaitlist.append('<td>' + '<button  type="button" id="assign" class="btn btn-primary" data-dismiss="modal">'+  'Assign</button>' +'</td>');
+     displayWaitlist.append('<td>' + '<button  type="button" id="clear" class="btn btn-primary" data-dismiss="modal">'+  'Clear</button>' +'</td>');
 
-    window.location.assign('waitlist.html');
+     
+
+$('#waitlist_display').append(displayWaitlist);
+   
 
 };
-
+};
 // function that builds a grid in the "container"
 function createGrid(serversnum, tables) {
     for (var rows = 0; rows < serversnum; rows++) {
@@ -74,9 +94,8 @@ function createGrid(serversnum, tables) {
 
 function openTables() {
     guestName = $('#guestName').val();
-    numAdults = $('#adults').val();
-    numChild = $('#children').val();
-    var newguest = new Guestinfo(guestName, numAdults, numChild);
+    partysize = $('#party_size').val();
+    var newguest = new Guestinfo(guestName, partysize);
     newguest.setguestinfo();
     newguest.showHost();
 
@@ -90,7 +109,6 @@ function openTables() {
 $('#wait').on('click', function () {
 
     pushWaitlist();
-    newguest.setguestinfo();
 
 
 });
@@ -128,6 +146,9 @@ server.push(newserver)
 };
 
 function signServerOut() {
+    if(serverName = $('#servernames').val()==''){
+        return;
+    }
     serverName = $('#servernames').val();
     serverPin = $('#serverpin').val();
     timeOff = $('#timeoff').val();
