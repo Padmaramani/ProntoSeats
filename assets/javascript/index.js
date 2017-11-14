@@ -177,21 +177,25 @@ server.push(newserver)
     checkIn.append('<td serverinfo=' + newserver.name + '>' + newserver.timeOut + '</td>');
 
     $('#list1').append(checkIn);
-    for(i =0;i < server.length;i++){
-var displayServerMain = $('<table class="table">');
-displayServerMain.attr('class',server[i].name);
-
-displayServerMain.append('<thead>'+'<tr>' + '<th scope="col" id=' + server[i].name +'>'+ server[i].name+'  ' + server[i].timeOut+'</th'+ '</tr>' +'</thead>');
-
-$('.seats').html(displayServerMain);
-
-    };
+   
     serverName = $('#servernames').val('');
     serverPin = $('#serverpin').val('');
     timeOff = $('#timeoff').val('');
 
 };
+function DisplayMain(){
+    $('.seats').empty();
+    for(i =0;i < server.length;i++){
+       
+var displayServerMain = $('<table class="table">');
+displayServerMain.attr('id',server[i].name);
 
+displayServerMain.append('<thead>'+'<tr>' + '<th scope="col">'+ server[i].name+'  ' + server[i].timeOut+'</th'+ '</tr>' +'</thead>');
+
+$('.seats').append(displayServerMain);
+
+    };
+};
 function signServerOut() {
     if(serverName = $('#servernames').val()==''){
         return;
@@ -206,7 +210,7 @@ function signServerOut() {
     server.splice(i,1);
         };
         } ;
-   
+   $('#'+ serverName).empty();
     serverName = $('#servernames').val('');
     serverPin = $('#serverpin').val('');
     timeOff = $('#timeoff').val('');
@@ -215,6 +219,7 @@ function signServerOut() {
 $('#signin').on('click', function () {
     $('#serverinput').modal('hide');
     signInServer();
+    DisplayMain();
 
 });
 
