@@ -1,6 +1,6 @@
 var myVar = setInterval(function () {
     currentWeather()
-}, 1000);
+}, 3000);
 
 function currentWeather() {
 
