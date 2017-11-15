@@ -21,6 +21,9 @@ function currentWeather() {
     today = mm + '/' + dd + '/' + yyyy;
 
     hours = date.getHours(); // => 9
+    if (hours > 12) {
+        hours = ((hours + 11) % 12 + 1);
+    }
     minutes = date.getMinutes(); // =>  30
     if (minutes < 10) {
         minutes = '0' + minutes;
