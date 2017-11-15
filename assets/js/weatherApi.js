@@ -1,8 +1,6 @@
-
-
-
-
-var myVar = setInterval(function () { currentWeather() }, 1000);
+var myVar = setInterval(function () {
+    currentWeather()
+}, 1000);
 
 function currentWeather() {
 
@@ -38,8 +36,8 @@ function currentWeather() {
         var targetDiv01 = document.getElementById("currentTemp");
         targetDiv01.innerHTML = response.main.temp + "F";
 
-        var targetDiv03 = document.getElementById("currentweatherdesc");
-        targetDiv03.innerHTML = response.weather[0].description;
+        // var targetDiv03 = document.getElementById("currentweatherdesc");
+        // targetDiv03.innerHTML = response.weather[0].description;
 
         icon_id = response.weather[0].icon;
 
