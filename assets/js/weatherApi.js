@@ -30,7 +30,7 @@ function currentWeather() {
     var targetDate = document.getElementById("currentts");
     targetDate.innerHTML = today + " " + time;
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?zip=92691,us&units=imperial&cnt=3&APPID=f7a50c78795e80e2b73eb71043ebc20c";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?zip=92691,us&units=imperial&cnt=3&APPID=f7a50c78795e80e2b73eb71043ebc20c";
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -45,14 +45,14 @@ function currentWeather() {
 
         icon_id = response.weather[0].icon;
 
-        $("#imgid").attr("src", "http://openweathermap.org/img/w/" + icon_id + ".png");
+        $("#imgid").attr("src", "https://openweathermap.org/img/w/" + icon_id + ".png");
 
     });
 };
 
 function forecastbutton() {
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?zip=92691,us&units=imperial&APPID=f7a50c78795e80e2b73eb71043ebc20c";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?zip=92691,us&units=imperial&APPID=f7a50c78795e80e2b73eb71043ebc20c";
     $.ajax({
         url: queryURL,
         method: "GET",
