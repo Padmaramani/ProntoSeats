@@ -33,6 +33,7 @@ function NewTable(num) {
     this.tableNum = num;
     this.dropdown = false;
 };
+
 function openResturant(createArray) {
     if (createArray) {
 
@@ -45,7 +46,6 @@ function openResturant(createArray) {
             // };
         };
     }
-    // todo create table objects 
 
     for (i = 0; i < tableArray.length; i++)
         if (tableArray[i].dropdown === false) {
@@ -98,6 +98,7 @@ $('body').on('click', '.assign', function () {
 
 $('body').on('click', '.assign', clear);
 $('body').on('click', '.clear', clear);
+
 function clear() {
     console.log("cleared " + waitList[$(this).data("index")].guestName);
     waitList.splice($(this).data("index"), 1);
@@ -216,6 +217,7 @@ function signInServer() {
     timeOff = $('#timeOff').val('');
 
 };
+
 function DisplayMain() {
     $('.seats').empty();
     for (i = 0; i < server.length; i++) {
@@ -229,6 +231,7 @@ function DisplayMain() {
 
     };
 };
+
 function signServerOut() {
     if (serverName = $('#serverNames').val() == '') {
         return;
@@ -306,6 +309,7 @@ $('#choose').on('click', function () {
 
     };
 });
+
 function TableNServer(server, table, guest, party) {
     this.serversSelect = server;
     this.tableSelect = table;
@@ -347,4 +351,50 @@ $('#tableServer').on('click', function () {
     // var serverdata = server.detach(i,1);
     //     };
     //     } ;
+
 });
+
+
+$("#weatherModal").html(`<!-- weather widget start -->
+<a target="_blank" href="http://www.booked.net/weather/mission-viejo-7087">
+    <img src="https://w.bookcdn.com/weather/picture/3_7087_0_1_137AE9_250_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=w209&anc_id=20723"
+        alt="booked.net" />
+</a>
+<!-- weather widget end -->
+
+<!-- Irvine -->
+<!-- weather widget start -->
+<a target="_blank" href="http://www.booked.net/weather/irvine-5539">
+    <img src="https://w.bookcdn.com/weather/picture/3_5539_0_1_137AE9_250_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=w209&anc_id=6330"
+        alt="booked.net" />
+</a>
+<!-- weather widget end -->
+
+<!-- weather widget start -->
+<a target="_blank" href="http://www.booked.net/weather/aliso-viejo-33435">
+    <img src="https://w.bookcdn.com/weather/picture/3_33435_0_1_137AE9_250_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=w209&anc_id=6330"
+        alt="booked.net" />
+</a>
+<!-- weather widget end -->
+
+<!-- weather widget start -->
+<a target="_blank" href="http://www.booked.net/weather/lake-forest-1407">
+    <img src="https://w.bookcdn.com/weather/picture/3_1407_0_1_137AE9_250_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=w209&anc_id=6330"
+        alt="booked.net" />
+</a>
+<!-- weather widget end -->
+
+<!-- weather widget start -->
+<a target="_blank" href="http://www.booked.net/weather/laguna-hills-4979">
+    <img src="https://w.bookcdn.com/weather/picture/3_4979_0_1_137AE9_250_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=w209&anc_id=6330"
+        alt="booked.net" />
+</a>
+<!-- weather widget end -->
+
+<!-- weather widget start -->
+<a target="_blank" href="http://www.booked.net/weather/san-juan-capistrano-1359">
+    <img src="https://w.bookcdn.com/weather/picture/3_1359_0_1_137AE9_250_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=2&domid=w209&anc_id=6330"
+        alt="booked.net" />
+</a>
+<!-- weather widget end -->`);
+

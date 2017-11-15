@@ -1,8 +1,9 @@
 
+currentWeather();
+var myVar = setInterval(function () {
+    currentWeather();
+}, 3000);
 
-
-
-var myVar = setInterval(function () { currentWeather() }, 1000);
 
 function currentWeather() {
 
@@ -12,45 +13,50 @@ function currentWeather() {
     var yyyy = date.getFullYear();
 
     if (dd < 10) {
-        dd = '0' + dd
+
+        dd = '0' + dd;
     }
 
     if (mm < 10) {
-        mm = '0' + mm
+        mm = '0' + mm;
     }
 
     today = mm + '/' + dd + '/' + yyyy;
-
-    hours = date.getHours(); // => 9
+    if (hours > 12) {
+        hours = ((hours + 11) % 12 + 1);
+    }
     minutes = date.getMinutes(); // =>  30
+    if (minutes < 10) {
+        minutes = '0' + minutes;
+    }
     seconds = date.getSeconds(); // => 51
-    time = hours + ':' + minutes + ':' + seconds;
+    time = hours + ':' + minutes;
     var targetDate = document.getElementById("currentts");
     targetDate.innerHTML = today + " " + time;
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?zip=92691,us&units=imperial&cnt=3&APPID=9cc1ac9e103bec3fdc87b1ee74880bba";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?zip=92691,us&units=imperial&cnt=3&APPID=f7a50c78795e80e2b73eb71043ebc20c";
     $.ajax({
         url: queryURL,
         method: "GET",
         crossDomain: true
     }).done(function (response) {
-        console.log(response);
+        // console.log(response);
         var targetDiv01 = document.getElementById("currentTemp");
         targetDiv01.innerHTML = response.main.temp + "F";
 
-        var targetDiv03 = document.getElementById("currentweatherdesc");
-        targetDiv03.innerHTML = response.weather[0].description;
+        // var targetDiv03 = document.getElementById("currentweatherdesc");
+        // targetDiv03.innerHTML = response.weather[0].description;
 
         icon_id = response.weather[0].icon;
 
-        $("#imgid").attr("src", "http://openweathermap.org/img/w/" + icon_id + ".png");
+        $("#imgid").attr("src", "https://openweathermap.org/img/w/" + icon_id + ".png");
 
     });
 };
 
 function forecastbutton() {
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?zip=92691,us&units=imperial&APPID=9cc1ac9e103bec3fdc87b1ee74880bba";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?zip=92691,us&units=imperial&APPID=f7a50c78795e80e2b73eb71043ebc20c";
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -70,6 +76,4 @@ function forecastbutton() {
         var popup = document.getElementById("forecast-appear-here");
         popup.classList.toggle("show");
     });
-
-
 };
