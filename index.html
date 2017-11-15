@@ -23,8 +23,8 @@
           </div>
           <!-- // time -->
         </div>
-        <!-- // col-lg-2 -->
-        <div class="col-lg-4">
+         <!-- // col-lg-3 -->
+         <div class="col-lg-4">                 
           <div class="weather">
             <img id="imgid" src="http://openweathermap.org/img/w/01d.png">
             <div class="temp" id="currentTemp">
@@ -68,7 +68,7 @@
               <input type="number" class="form-control" id="partySize">
             </div>
             <button id="wait" class="btn btn-secondary">Wait List</button>
-            <input type="button" id="tables" class="btn btn-secondary" data-toggle="modal" data-target="#assignTable" value="Assign Table">
+            <input type="button" id="tables" class="btn btn-secondary" data-toggle="modal" data-target="#assignTable" value="Seat Party">
             </button>
           </form>
         </div>
@@ -79,158 +79,12 @@
     <!-- // panel -->
     <div class="panel">
       <div class="overview">
-        SEATING OVERVIEW
+        <h3>SEATING OVERVIEW</h3>
+        <!-- tables from js -->
+
+        
+        <!-- // tables from js --> 
       </div>
-
-      <!-- tables from js
-
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="serverName">Server 01</th>
-            <th class="serverStats">
-              9
-            </th>
-            <th>
-              Tables
-            </th>
-            <th class="serverStats">
-              36
-            </th>
-            <th>
-              Patrons
-            </th>
-            <th class="serverOffShift">
-              Off shift at 11:00 pm
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="6">
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">12</span>
-                <span class="seatedPatrons">4</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">6</span>
-                <span class="seatedPatrons">3</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">21</span>
-                <span class="seatedPatrons">11</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">12</span>
-                <span class="seatedPatrons">4</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">6</span>
-                <span class="seatedPatrons">3</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">21</span>
-                <span class="seatedPatrons">11</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">12</span>
-                <span class="seatedPatrons">4</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">6</span>
-                <span class="seatedPatrons">3</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">21</span>
-                <span class="seatedPatrons">11</span>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="serverName">Server 02</th>
-            <th class="serverStats">
-              4
-            </th>
-            <th>
-              Tables
-            </th>
-            <th class="serverStats">
-              16
-            </th>
-            <th>
-              Patrons
-            </th>
-            <th class="serverOffShift">
-              Off shift at 11:00 pm
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="6">
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">12</span>
-                <span class="seatedPatrons">4</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">6</span>
-                <span class="seatedPatrons">3</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">21</span>
-                <span class="seatedPatrons">11</span>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="serverName">Server 03</th>
-            <th class="serverStats">
-              4
-            </th>
-            <th>
-              Tables
-            </th>
-            <th class="serverStats">
-              16
-            </th>
-            <th>
-              Patrons
-            </th>
-            <th class="serverOffShift">
-              Off shift at 11:00 pm
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="6">
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">12</span>
-                <span class="seatedPatrons">4</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">6</span>
-                <span class="seatedPatrons">3</span>
-              </a>
-              <a href="## clear table ## " class="tableButton">
-                <span class="tableNumber">21</span>
-                <span class="seatedPatrons">11</span>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    -->
-      <!-- // tables from js -->
-
     </div>
     <!-- // panel -->
     <div class="footer">
@@ -403,7 +257,7 @@
 
         <!-- Modal body -->
         <div id="weatherModal" class="modal-body">
-
+        
         </div>
 
         <!-- Modal footer -->
@@ -435,6 +289,7 @@
           </div>
           <form id="addressline1">
             <div class="form-row" id="inputAddress">
+
               <div class="form-group col-md-5">
                 <label for="inputAddress">Address</label>
                 <input type="text" class="form-control" name="inputAddress" placeholder="1234 Main St">
@@ -510,6 +365,7 @@
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiIqiufjANe-rskUyfRzenxSacRGBCf80&callback=initMap">
   </script>
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>

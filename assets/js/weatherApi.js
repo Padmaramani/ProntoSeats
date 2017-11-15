@@ -1,7 +1,9 @@
+
 currentWeather();
 var myVar = setInterval(function () {
     currentWeather();
 }, 3000);
+
 
 function currentWeather() {
 
@@ -11,6 +13,7 @@ function currentWeather() {
     var yyyy = date.getFullYear();
 
     if (dd < 10) {
+
         dd = '0' + dd;
     }
 
@@ -19,8 +22,6 @@ function currentWeather() {
     }
 
     today = mm + '/' + dd + '/' + yyyy;
-
-    hours = date.getHours(); // => 9
     if (hours > 12) {
         hours = ((hours + 11) % 12 + 1);
     }
@@ -75,6 +76,4 @@ function forecastbutton() {
         var popup = document.getElementById("forecast-appear-here");
         popup.classList.toggle("show");
     });
-
-
 };

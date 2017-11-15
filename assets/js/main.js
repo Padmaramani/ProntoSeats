@@ -46,7 +46,6 @@ function openResturant(createArray) {
             // };
         };
     }
-    // todo create table objects
 
     for (i = 0; i < tableArray.length; i++)
         if (tableArray[i].dropdown === false) {
@@ -352,6 +351,7 @@ $('#tableServer').on('click', function () {
     // var serverdata = server.detach(i,1);
     //     };
     //     } ;
+
 });
 
 
@@ -397,3 +397,4 @@ $("#weatherModal").html(`<!-- weather widget start -->
         alt="booked.net" />
 </a>
 <!-- weather widget end -->`);
+

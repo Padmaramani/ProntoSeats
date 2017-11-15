@@ -135,3 +135,4 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 $("#googleMaps").on("shown.bs.modal", function () {
   google.maps.event.trigger(map, "resize");
 });
+
