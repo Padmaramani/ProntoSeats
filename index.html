@@ -1,372 +1,520 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Pronto Seats </title>
+  <meta charset="utf-8">
+  <title>prontoSeats DEMO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
 </head>
-<link rel="stylesheet" href="assets/css/reset.css" />
 
+<body>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-    crossorigin="anonymous">
-<link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/custom.css" />
+  <div class="container">
+    <div class="header">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="time">
+            <div class="currentts" id="currentts">
 
-<body id='page1'>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3">
-                <span class="border">
-                    Weather
-                </span>
             </div>
-            <div class="col-sm-9">
-                <h1>Resturant Name</h1>
-            </div>
-
+          </div>
+          <!-- // time -->
         </div>
-        <br>
-
-        <div class="row">
-            <div class="col-sm-3">
-
-
-
-                <input id='guestName' type='text' placeholder="Party Name">
-                <br>
-                <br>
-
-                <p>
-                    <input id='party_size' type="number" placeholder="Party Size"> </p>
-
-
-
-                <br>
-
-
-
-                <button id='wait' class="btn btn-primary">Add to Wait list</button>
-
-                <button id='tables' type="button" class="btn btn-primary" data-toggle="modal" data-target="#assigntable" data-target=".bd-example-modal-lg">
-                    Assign Table
-                </button>
-
-                <!-- Modal 1-->
-                <div class="modal fade" id="assigntable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Assign Tables</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <wrapper id='info'>
-                                                <p id='guestinfo'></p>
-                                            </wrapper>
-                                        </div>
-
-                                        <div class="col-md-9">
-
-                                            <form>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Select Server</label>
-                                                    <select class="form-control" id="server_select">
-
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Select Table</label>
-                                                    <select class="form-control" id="select_table">
-
-                                                    </select>
-                                                </div>
-
-
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <input type='button' id='table_server' class="btn btn-primary" value="Seat Guest" data-toggle="modal" data-target="#guest_server">
-                            </div>
-
-                            </form>
-
-                        </div>
-
-                    </div>
-
-                </div>
+        <!-- // col-lg-2 -->
+        <div class="col-lg-4">
+          <div class="weather">
+            <img id="imgid" src="http://openweathermap.org/img/w/01d.png">
+            <div class="temp" id="currentTemp">
+              CURRENT TEMP:
+              <small>&#8457;</small>
             </div>
+          </div>
+          <!-- // currentTemp -->
         </div>
+        <!-- // col-lg-4 -->
+        <div class="col-lg-5">
 
-  <!-- Modal shows the guest and server and table number -->
-  <wrapper id='modals'>
-    <div class="modal fade" id="guest_server" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Guest Table</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+          <div class="weatherChannel">
+            <a href="#weatherChannel" role="button" data-toggle="modal"></a>
+          </div>
+          <div class="googleMaps">
+            <a href="#googleMaps" role="button" data-toggle="modal"></a>
+          </div>
+          <div class="serverAdmin">
+            <a href="#serverAdmin" role="button" data-toggle="modal"></a>
+          </div>
+          <div class="viewWaitList">
+            <a href="#viewWaitList" role="button" data-toggle="modal"></a>
+          </div>
+        </div>
+        <!-- // col-1g-8 -->
+      </div>
+      <!-- // row -->
+    </div>
+    <!-- // header -->
+    <div class="panel formy">
+      <div class="row">
+        <div class="col-lg-12">
+          <form>
+            <div class="form-group">
+              <label for="partyName">Party Name:</label>
+              <input type="text" class="form-control" id="guestName">
+            </div>
+            <div class="form-group">
+              <label for="partySize">Number in Party:</label>
+              <input type="number" class="form-control" id="partySize">
+            </div>
+            <button id="wait" class="btn btn-secondary">Wait List</button>
+            <input type="button" id="tables" class="btn btn-secondary" data-toggle="modal" data-target="#assignTable" value="Assign Table">
             </button>
-          </div>
-          <div class="modal-body">
-            <wrapper id='guest_server_info'>
-
-            </wrapper>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            
-          </div>
+          </form>
         </div>
+        <!-- // col-1g-12 -->
+      </div>
+      <!-- // row -->
+    </div>
+    <!-- // panel -->
+    <div class="panel">
+      <div class="overview">
+        SEATING OVERVIEW
+      </div>
+
+      <!-- tables from js
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="serverName">Server 01</th>
+            <th class="serverStats">
+              9
+            </th>
+            <th>
+              Tables
+            </th>
+            <th class="serverStats">
+              36
+            </th>
+            <th>
+              Patrons
+            </th>
+            <th class="serverOffShift">
+              Off shift at 11:00 pm
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6">
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">12</span>
+                <span class="seatedPatrons">4</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">6</span>
+                <span class="seatedPatrons">3</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">21</span>
+                <span class="seatedPatrons">11</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">12</span>
+                <span class="seatedPatrons">4</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">6</span>
+                <span class="seatedPatrons">3</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">21</span>
+                <span class="seatedPatrons">11</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">12</span>
+                <span class="seatedPatrons">4</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">6</span>
+                <span class="seatedPatrons">3</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">21</span>
+                <span class="seatedPatrons">11</span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="serverName">Server 02</th>
+            <th class="serverStats">
+              4
+            </th>
+            <th>
+              Tables
+            </th>
+            <th class="serverStats">
+              16
+            </th>
+            <th>
+              Patrons
+            </th>
+            <th class="serverOffShift">
+              Off shift at 11:00 pm
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6">
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">12</span>
+                <span class="seatedPatrons">4</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">6</span>
+                <span class="seatedPatrons">3</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">21</span>
+                <span class="seatedPatrons">11</span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="serverName">Server 03</th>
+            <th class="serverStats">
+              4
+            </th>
+            <th>
+              Tables
+            </th>
+            <th class="serverStats">
+              16
+            </th>
+            <th>
+              Patrons
+            </th>
+            <th class="serverOffShift">
+              Off shift at 11:00 pm
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6">
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">12</span>
+                <span class="seatedPatrons">4</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">6</span>
+                <span class="seatedPatrons">3</span>
+              </a>
+              <a href="## clear table ## " class="tableButton">
+                <span class="tableNumber">21</span>
+                <span class="seatedPatrons">11</span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    -->
+      <!-- // tables from js -->
+
+    </div>
+    <!-- // panel -->
+    <div class="footer">
+      <div class="row">
+        <div class="col-lg-12">
+          &copy; prontoSeats ~ all rights reserved
+        </div>
+        <!-- // col-lg-12 -->
+      </div>
+      <!-- // row -->
+    </div>
+    <!-- // footer -->
+  </div>
+  <!-- // container -->
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
       </div>
     </div>
-  </wrapper>
+  </div>
+  <!-- // end modal -->
 
+  <!-- The Server Management -->
+  <div class="modal fade" id="serverManagement">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
-        <!-- Modal 2
-        <wrapper id='modal2'>
-            <div class="modal fade" id="chooseserver" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Select Server</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Time Off</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody id='availableservers'>
-
-
-
-                                </tbody>
-                            </table>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Seat Guest</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </wrapper> -->
-        <br>
-        <br>
-
-
-        <!-- Button trigger modal -->
-        <button id 'seewait' type="button" class="btn btn-primary" data-toggle="modal" data-target="#openwaitlist">
-            WaitList
-        </button>
-
-        <!-- Modal waitliost-->
-        <div class="modal fade" id="openwaitlist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-
-                                    <th scope="col">Party Name</th>
-                                    <th scope="col">Adults</th>
-                                    <th scope="col">Assign</th>
-                                    <th scope="col">Clear</th>
-                                </tr>
-                            </thead>
-                            <tbody id='waitlist_display'>
-
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Server Management</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <br>
-        <br>
 
-        <!-- Button trigger modal -->
-        <button id='serverlist' type="button" class="btn btn-primary" data-toggle="modal" data-target="#serverinput">
-            Server Sign In/Sign Out
-        </button>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>
+            <input id="serverNames" type="text" placeholder='Name'>
+          </p>
+          <p>
+            <input id="serverPin" type="number" placeholder="Pin Code">
+          </p>
+          <p>
+            <input id='timeOff' placeholder="Time Off">
+          </p>
+          <button id='signout' type="button" class="btn btn-secondary">Sign Off</button>
+          <button id='signin' type="button" class="btn btn-primary">Sign In</button>
+        </div>
 
-        <!-- Modal Sign in/ Off-->
-        <wrapper id='modals'>
-            <div class="modal fade" id="serverinput" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Sign In/Sign Off
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                        </div>
-                        <div class="modal-body">
-                            <wrapper id='serversignin'>
-                                <p>
-                                    <input id='servernames' type="text" placeholder='Name'>
-                                </p>
-                                <p>
-                                    <input id='serverpin' type="number" placeholder="Pin Code">
-                                </p>
-                                <p>
-                                    <input id='timeoff' type='time' step='60' placeholder="Time Off">
-                                </p>
-                            </wrapper>
-                        </div>
-                        <div class="modal-footer">
-                            <button id='signout' type="button" class="btn btn-secondary">Sign Off</button>
-                            <button id='signin' type="button" class="btn btn-primary">Sign In</button>
-                        </div>
-                    </div>
-                </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- // end modal -->
+
+  <!-- The assignTable Modal -->
+  <div class="modal fade" id="assignTable">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Assign Table</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">
+                <div id="guestInfo"></div>
+              </div>
+              <!-- // col-md-4 -->
+              <div class="col-md-8">
+
+                <form>
+                  <div class="form-group">
+                    <label for="serverSelect">Select Server</label>
+                    <select class="form-control" id="serverSelect" name="serverSelect">
+
+                    </select>
+                  </div>
+                  <!-- // form group -->
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select Table</label>
+                    <select class="form-control" id="selectTable">
+
+                    </select>
+                  </div>
+                  <!-- // form group -->
+                  <input type="button" class="btn btn-secondary" id="tableServer" data-toggle="modal" data-target="#guestServer" value="Assign Table"></input>
+              </div>
+              <!-- // col-md-8 -->
             </div>
-        </wrapper>
+            <!-- // row -->
+          </div>
+          <!-- // container-fluid -->
+        </div>
+        <!-- // modal body -->
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
 
-        <br>
-        <br>
-        <button id='signin' type="button" class="btn btn-primary" data-toggle="modal" data-target="#signinlist">Available Servers</button>
+      </div>
+    </div>
+  </div>
+  <!-- // end modal -->
 
+  <!-- The Confirmation Modal -->
+  <div class="modal fade" id="guestServer">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Confirmation</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
 
-        <!-- Modalsign in list -->
-        <wrapper id='modals'>
-            <div class="modal fade" id="signinlist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Servers on Shift
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                        </div>
-                        <div class="modal-body">
-                            <wrapper id='serverlist'>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div id="guestServerInfo"></div>
+        </div>
+        <!-- // modal body -->
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
 
-                                            <th scope="col">Server Name</th>
-                                            <th scope="col">Time In</th>
-                                            <th scope="col">Time Off</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id='list1'>
-
-                                    </tbody>
-                                </table>
-                            </wrapper>
-                        </div>
-                        <div class="modal-footer">
-
-                            <button id='' type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </wrapper>
+      </div>
+    </div>
+  </div>
+  <!-- // end modal -->
 
 
+  <!-- Weather Channel Modal -->
+  <div class="modal fade" id="weatherChannel">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Weather Channel</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
 
-        <div class="col-sm-9">
-            <wrapper class='seats'>
-               
-            </wrapper>
+        <!-- Modal body -->
+        <div id="weatherModal" class="modal-body">
 
         </div>
 
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
-            <div class="fixed-bottom">
-                <br>
-                <wrapper id='bottom'>
-
-                </wrapper>
-
-            </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
 
-
-
+      </div>
     </div>
+  </div>
+  <!-- // end modal -->
 
+  <!-- googleMaps Modal -->
 
+  <div class="modal fade" id="googleMaps">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Google Maps</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
 
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="sourceAddress">
+            <h4>Source Address</h4>
+          </div>
+          <form id="addressline1">
+            <div class="form-row" id="inputAddress">
+              <div class="form-group col-md-5">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" name="inputAddress" placeholder="1234 Main St">
+              </div>
+              <div class="form-group col-md-5" id="inputAddress2">
+                <label for="inputAddress2">Address 2</label>
+                <input type="text" class="form-control" name="inputAddress2" placeholder="Apartment, studio, or floor">
+              </div>
+            </div>
+            <div class="form-row" id="inputCity">
+              <div class="form-group col-md-5">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" name="inputCity">
+              </div>
+              <div class="form-group col-md-3" id="inputState">
+                <label for="inputState">State</label>
+                <input type="text" class="form-control" name="inputState">
+              </div>
+              <div class="form-group col-md-2" id="inputZip">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" name="inputZip">
+              </div>
+            </div>
 
+          </form>
+          <div id="spacingid"></div>
+          <div class="targetAddress">
+            <h3>Target Address</h3>
+          </div>
+          <form id="addressline2">
+            <div class="form-row" id="inputAddress2">
+              <div class="form-group col-md-5">
+                <label for="inputAddress2">Address</label>
+                <input type="text" class="form-control" name="inputAddress2" placeholder="1234 Main St">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputAddress22">Address 2</label>
+                <input type="text" class="form-control" name="inputAddress22" placeholder="Apartment, studio, or floor">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="inputCity2">City</label>
+                <input type="text" class="form-control" name="inputCity2">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="inputState2">State</label>
+                <input type="text" class="form-control" name="inputState2">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip2">Zip</label>
+                <input type="text" class="form-control" name="inputZip2">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-secondary" id="buttonClick">Calculate</button>
+          </form>
 
+          <div id="empty-div"></div>
+          <div id="empty-div2"></div>
 
+          <div id="map"></div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/dateformat.js"></script>
-    <script type="text/javascript" src="assets/javascript/index.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-        crossorigin="anonymous"></script>
-
+  </div>
+  <!-- // end modal -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiIqiufjANe-rskUyfRzenxSacRGBCf80&callback=initMap">
+  </script>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/googleMapsApi.js"></script>
+<script type="text/javascript" src="assets/js/weatherApi.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>
 
 </html>
