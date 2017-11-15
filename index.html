@@ -7,6 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
+  <!--  crossorigin="anonymous"></script>-->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>-->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>-->
   <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 
@@ -23,8 +28,8 @@
           </div>
           <!-- // time -->
         </div>
-         <!-- // col-lg-3 -->
-         <div class="col-lg-4">                 
+        <!-- // col-lg-2 -->
+        <div class="col-lg-4">
           <div class="weather">
             <img id="imgid" src="http://openweathermap.org/img/w/01d.png">
             <div class="temp" id="currentTemp">
@@ -68,7 +73,7 @@
               <input type="number" class="form-control" id="partySize">
             </div>
             <button id="wait" class="btn btn-secondary">Wait List</button>
-            <input type="button" id="tables" class="btn btn-secondary" data-toggle="modal" data-target="#assignTable" value="Seat Party">
+            <input type="button" id="tables" class="btn btn-secondary" data-toggle="modal" data-target="#assignTable" value="Assign Table">
             </button>
           </form>
         </div>
@@ -80,17 +85,18 @@
     <div class="panel">
       <div class="overview">
         <h3>SEATING OVERVIEW</h3>
-        <!-- tables from js -->
 
-        
-        <!-- // tables from js --> 
+        <!-- tables display -->
+
+
       </div>
+      <!-- // overview -->
     </div>
     <!-- // panel -->
     <div class="footer">
       <div class="row">
         <div class="col-lg-12">
-          &copy; prontoSeats ~ all rights reserved
+          This awesome eatery admin system brought to you by &copy; prontoSeats ~ all rights reserved
         </div>
         <!-- // col-lg-12 -->
       </div>
@@ -126,31 +132,35 @@
   </div>
   <!-- // end modal -->
 
-  <!-- The Server Management -->
-  <div class="modal fade" id="serverManagement">
+  <!-- The Server Admin Modal -->
+  <div class="modal fade" id="serverAdmin">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Server Management</h4>
+          <h4 class="modal-title">Server Admin</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
-          <p>
-            <input id="serverNames" type="text" placeholder='Name'>
-          </p>
-          <p>
-            <input id="serverPin" type="number" placeholder="Pin Code">
-          </p>
-          <p>
-            <input id='timeOff' placeholder="Time Off">
-          </p>
-          <button id='signout' type="button" class="btn btn-secondary">Sign Off</button>
-          <button id='signin' type="button" class="btn btn-primary">Sign In</button>
+
+          <label for "serverNames">Server Name</label>
+          <input id="serverNames" type="text" class="form-control">
+
+          <label for "serverPin">Server PIN</label>
+          <input id="serverPin" type="number" class="form-control" placeholder="ex. 1234">
+
+          <label for "timeOff">Time Off Shift</label>
+          <input id="timeOff" type="text" class="form-control" placeholder="ex. 11:00 pm">
+          <button id='signIn' type="button" class="btn btn-secondary" data-dismiss="modal">Sign In</button>
+          <button id='signOut' type="button" class="btn btn-secondary" data-dismiss="modal">Sign Out</button>
+
         </div>
+        </form>
+
+
 
         <!-- Modal footer -->
         <div class="modal-footer">
@@ -177,11 +187,7 @@
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-md-4">
-                <div id="guestInfo"></div>
-              </div>
-              <!-- // col-md-4 -->
-              <div class="col-md-8">
+              <div class="col-md-12">
 
                 <form>
                   <div class="form-group">
@@ -192,13 +198,13 @@
                   </div>
                   <!-- // form group -->
                   <div class="form-group">
-                    <label for="exampleFormControlSelect1">Select Table</label>
+                    <label for="selectTable">Select Table</label>
                     <select class="form-control" id="selectTable">
 
                     </select>
                   </div>
                   <!-- // form group -->
-                  <input type="button" class="btn btn-secondary" id="tableServer" data-toggle="modal" data-target="#guestServer" value="Assign Table"></input>
+                  <input type="button" class="btn btn-secondary" id="tableServer" data-toggle="modal"  data-dismiss="modal" value="Assign Table" clear="both"></input>
               </div>
               <!-- // col-md-8 -->
             </div>
@@ -217,31 +223,7 @@
   </div>
   <!-- // end modal -->
 
-  <!-- The Confirmation Modal -->
-  <div class="modal fade" id="guestServer">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
 
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Confirmation</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <div id="guestServerInfo"></div>
-        </div>
-        <!-- // modal body -->
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!-- // end modal -->
 
 
   <!-- Weather Channel Modal -->
@@ -289,7 +271,6 @@
           </div>
           <form id="addressline1">
             <div class="form-row" id="inputAddress">
-
               <div class="form-group col-md-5">
                 <label for="inputAddress">Address</label>
                 <input type="text" class="form-control" name="inputAddress" placeholder="1234 Main St">
@@ -317,7 +298,7 @@
           </form>
           <div id="spacingid"></div>
           <div class="targetAddress">
-            <h3>Target Address</h3>
+            <h4>Target Address</h4>
           </div>
           <form id="addressline2">
             <div class="form-row" id="inputAddress2">
