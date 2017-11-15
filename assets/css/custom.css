@@ -1,67 +1,313 @@
-#page1{
-    background: url("https://www.vitaliberata.co.uk/blog/wp-content/uploads/2017/07/558749_210_z1.jpg") no-repeat center center fixed;
+/* 
+04 css :: chris cote
+*/
+
+html {
+    margin: 0;
+	padding: 0;
+    height: 100%;
+}
+
+body {
+    background: url(../img/bg.jpg) no-repeat top center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    color: whitesmoke;
-}
-h1{
-    margin: 0;
-    text-align: center;
-    
-    justify-content: center ;
-}
-#chid{
-     
-        text-indent: 50px;
-    
-}
-#assigntable{
-    color: black;
-}
-#party_size{
-    height: 30px;
-    width: 90px;
-}
-#children{
-    height: 30px;
-    width: 80px;
-}
-#container {
-	position: relative;
-	top: 30px;
-	outline:2px solid #000;
-	font-size: 0;
-	margin:auto;
-	height:200px;
-	width:300px;
-	padding: 0;
-	border: none;
+    margin: 20px 0;
 }
 
-.grid {
-	margin:0;
-	padding:0;
-	border:none;
-	outline:1px solid #000;
-	display:inline-block;
+.container {
+    margin: 0px auto;
+    padding: 0;
 }
-#info{
-font-size: 10px;
+
+.header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 2px solid #999999;            
+    background-color: #ffffff;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    zoom: 1;
+    min-height: 70px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
-#modals{
-    color: black;
+
+.weather {
+    margin: 20px 0 0 0;
+    padding: 0;    
 }
-.restTables{
-    width: 50px;
+
+.time {
+    margin: 30px 0 0 0;
+    padding: 0 0 0 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666666;
 }
-#modal2{
-    color: black;
+
+.overview{
+    margin: 5px 0 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #999999;
+    opacity: 1.0;
+    filter: alpha(opacity=100);
 }
-#openwaitlist{
-    color: black;
+
+.restaurant_name {
+    padding: 10px 0 0 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 42px;
+    color: #999999;
+    display: block;
+    clear: both;
 }
-#modals{
-    color: black;
+
+
+
+.panel {
+    border-left: 2px solid #999999;
+    border-right: 2px solid #999999;    
+    background-color: #ffffff;
+    margin: 0;
+    padding: 10px 0 20px 20px;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    zoom: 1;   
+    border-radius: 0;
+    min-height: 200px;
 }
+
+.panel p {
+    margin: 0;
+    padding: 20px 0 10px 0;
+}
+
+.panel .lefty {
+    min-height: 200px;
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+    zoom: 1;   
+    border-radius: 0;
+    border-top: 2px solid #999999;
+    margin: 20px 0 0 0;
+    padding: 20px 0;
+}
+
+
+.table {
+    margin: 25px 0;
+    width: 96%;
+}
+
+thead {
+    border: 1px solid #d5dade;
+    background-color: #90979f;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+thead .serverName {
+    background-color: #ffffff;
+    color: #333333;
+    font-weight: bold;
+    padding: 0 20px 0 10px;
+    width: 200px;
+}
+
+thead .serverOffShift {
+    background: url(../img/bgServerOffShift.png) no-repeat right;
+    text-align: right;
+    vertical-align: text-bottom;
+    background-color: #90979f;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+thead .serverStats {
+    background: url(../img/bgServerStats.png) no-repeat left;     
+    text-align: center;
+    width: 40px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+tbody {
+    border-bottom: 2px solid #d5dade;
+    border-right: 1px solid #d5dade;
+    border-left: 1px solid #d5dade;
+}
+
+.tableButton {
+    float: left;
+    background: url(../img/bgTableButton.png) no-repeat left;     
+    height: 60px;
+    width: 60px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #666666;
+    padding: 5px 0 0 2px;
+    margin: 10px;
+}
+
+.tableButton:hover {
+    background: url(../img/bgTableButton_hover.png) no-repeat left; 
+    text-decoration: none;    
+    color: #333333;
+}
+.tableButton .tableNumber {
+    margin: 10px 0 0 8px;
+}
+
+.tableButton .seatedPatrons {
+    margin: 12px 0 0 14px;
+}
+
+.footer {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 2px solid #999999;  
+    background-color: #ffffff;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    zoom: 1;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+
+.weatherChannel a {
+    background-image: url(../img/weatherChannel.png);
+    height: 48px;
+    width: 60px;
+    display: block;
+    float: right;
+    margin: 10px 25px 0 0;
+}
+
+.weatherChannel a:hover {
+    background-image: url(../img/weatherChannel_hover.png);
+}
+
+.googleMaps a {
+    background-image: url(../img/googleMaps.png);
+    height: 48px;
+    width: 60px;
+    display: block;
+    float: right;
+    margin: 10px 30px 0 0; 
+}
+
+.googleMaps a:hover {
+    background-image: url(../img/googleMaps_hover.png);
+}
+
+.serverAdmin a {
+    background-image: url(../img/serverAdmin.png);
+    height: 48px;
+    width: 60px;
+    display: block;
+    float: right;
+    margin: 10px 30px 0 0; 
+}
+
+.serverAdmin a:hover {
+    background-image: url(../img/serverAdmin_hover.png);
+}
+
+.viewWaitList a {
+    background-image: url(../img/viewWaitList.png);
+    height: 48px;
+    width: 60px;
+    display: block;
+    float: right;
+    margin: 10px 30px 0 0;   
+}
+
+.viewWaitList a:hover {
+    background-image: url(../img/viewWaitList_hover.png);
+}
+
+label {
+    font-size: 18px;
+    color: #333333;
+    margin: 0 0 5px 0;
+}
+
+input {
+    border-radius: 4px;
+    height: 40px;
+    width: 200px;
+    font-size: 32px;
+}
+
+#map {
+  position: static;
+  overflow: visible;
+  height: 400px;
+  width: 720px;
+  margin: 0px auto;
+  margin-top: 20px;
+}
+
+#imgid {
+    float: left;
+    margin: 2px 0 0 20px;
+    height: 40px;
+    width: 40px;    
+}
+
+.temp {
+    float: left;
+    margin: 0;
+    padding: 10px 0 0 0;    
+}
+
+.guestInfo {
+    border: 1px solid red;
+}
+
+.form-group {
+    width: 250px;
+    float: left;
+    margin: 0 0 0 25px;
+}
+
+.btn-secondary {
+    height: 50px;
+    width: 148px;
+    font-size: 24px;
+    margin: 22px 0 0 25px;
+}
+
+
+.formy {
+    border-bottom: 2px solid #999999;   
+    background-color: #cccccc;
+    min-height: 120px;  
+    border-radius: 0;
+}
+
+#inputCity {
+    clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

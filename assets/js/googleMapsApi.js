@@ -100,6 +100,9 @@ $.ajax({
           zoom: 7,
           center: {lat: 37.774929, lng: -122.419416}
         });
+        
+       
+    
         directionsDisplay.setMap(map);
 
         var onChangeHandler = function() {
