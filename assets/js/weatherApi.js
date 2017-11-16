@@ -1,4 +1,3 @@
-
 currentWeather();
 var myVar = setInterval(function () {
     currentWeather();
