@@ -86,7 +86,6 @@ function Guestinfo(name, size) {
 }
 
 function clear() {
-    console.log("cleared " + waitList[$(this).data("index")].guestName);
     waitList.splice($(this).data("index"), 1);
     $('#waitlist_display').empty();
     for (i = 0; i < waitList.length; i++) {
@@ -105,13 +104,12 @@ function clear() {
     };
 }
 
-$('body').on('click', '.assign', function () {
+$(document).on('click', '.assign', function () {
 
     var guest = waitList[$(this).data("index")];
     var newGuest = new Guestinfo(guest.guestName, guest.partySize);
     console.log(newGuest);
     guestArray.push(newGuest);
-    // console.log(guestArray);
     newGuest.setGuestInfo();
     newGuest.showHost();
     $('#assignTable').modal('show')
@@ -120,7 +118,7 @@ $('body').on('click', '.assign', function () {
 });
 
 
-$('body').on('click', '.clear', function () {
+$(document).on('click', '.clear', function () {
     clear();
 });
 
@@ -153,21 +151,6 @@ function pushWaitlist() {
 
 
         $('#waitlist_display').append(displayWaitList);
-
-        // for (i = 0; i < waitList.length; i++) {
-        //     var DisplayWaitList = $('<tr>');
-
-        //     DisplayWaitList.attr('waitlist_display', waitList[i].guestname);
-        //     DisplayWaitList.append('<td>' + waitList[i].guestName + '</td>');
-        //     DisplayWaitList.append('<td>' + waitList[i].partysize + '</td>');
-        //     DisplayWaitList.append('<td>' + '<button  data-index=' + i + ' type="button" class="assign btn btn-primary" data-dismiss="modal">' + 'Assign</button>' + '</td>');
-        //     DisplayWaitList.append('<td>' + '<button  data-index=' + i + ' type="button" class="clear btn btn-primary" data-dismiss="modal">' + 'Clear</button>' + '</td>');
-
-
-
-        //     $('#waitlist_display').append(DisplayWaitList);
-
-
     };
 };
 
