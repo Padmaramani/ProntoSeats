@@ -5,6 +5,7 @@ var myVar = setInterval(function () {
 
 
 function currentWeather() {
+
     var date = new Date();
     var dd = date.getDate();
     var mm = date.getMonth() + 1; //January is 0!
@@ -21,10 +22,18 @@ function currentWeather() {
     today = mm + '/' + dd + '/' + yyyy;
 
     hours = date.getHours(); // => 9
+    if (hours > 12) {
+        hours = ((hours + 11) % 12 + 1);
+    }
     minutes = date.getMinutes(); // =>  30
     if (minutes < 10) {
         minutes = '0' + minutes;
     }
+    seconds = date.getSeconds(); // => 51
+    time = hours + ':' + minutes;
+    var targetDate = document.getElementById("currentts");
+    targetDate.innerHTML = today + " " + time;
+
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?zip=92691,us&units=imperial&cnt=3&APPID=f7a50c78795e80e2b73eb71043ebc20c";
     $.ajax({
