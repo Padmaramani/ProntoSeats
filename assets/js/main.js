@@ -62,6 +62,7 @@ function Server(name, tIn, pin, tOut) {
     this.timeIn = tIn;
     this.serverPin = pin;
     this.timeOut = tOut;
+    this.displayToHome =false;
 
 
 
@@ -82,24 +83,8 @@ function Guestinfo(name, size) {
     this.showHost = function () {
         $('#guestInfo').html(guestInfo)
     };
-};
-
-$('body').on('click', '.assign', function () {
-
-    var guest = waitList[$(this).data("index")];
-    var newGuest = new Guestinfo(guest.guestName, guest.partySize);
-    console.log(newGuest);
-    guestArray.push(newGuest);
-    console.log(guestArray);
-    newGuest.setGuestInfo();
-    newGuest.showHost();
-    $('#assignTable').modal('show')
-});
-
-$('body').on('click', '.assign', clear);
-$('body').on('click', '.clear', clear);
-
-function clear() {
+}
+function clear(){
     console.log("cleared " + waitList[$(this).data("index")].guestName);
     waitList.splice($(this).data("index"), 1);
     $('#waitlist_display').empty();
@@ -109,8 +94,8 @@ function clear() {
         displayWaitlist.attr('waitlist_display', waitList[i].guestname);
         displayWaitlist.append('<td>' + waitList[i].guestName + '</td>');
         displayWaitlist.append('<td>' + waitList[i].partySize + '</td>');
-        displayWaitlist.append('<td>' + '<button  data-index=' + i + ' type="button" class="assign btn btn-primary">' + 'Assign</button>' + '</td>');
-        displayWaitlist.append('<td>' + '<button  data-index=' + i + ' type="button" class="clear btn btn-primary" data-dismiss="modal">' + 'Clear</button>' + '</td>');
+        displayWaitlist.append('<td>' + '<button  data-index=' + i + ' type="button" class="btn btn-primary assign">' + 'Assign</button>' + '</td>');
+        displayWaitlist.append('<td>' + '<button  data-index=' + i + ' type="button" class="btn btn-primary clear" data-dismiss="modal">' + 'Clear</button>' + '</td>');
 
 
         $('#waitlist_display').append(displayWaitlist);
@@ -119,33 +104,68 @@ function clear() {
     };
 }
 
+$('body').on('click','.assign', function () {
+
+    var guest = waitList[$(this).data("index")];
+    var newGuest = new Guestinfo(guest.guestName, guest.partySize);
+    console.log(newGuest);
+    guestArray.push(newGuest);
+    // console.log(guestArray);
+    newGuest.setGuestInfo();
+    newGuest.showHost();
+    $('#assignTable').modal('show')
+    console.log(guestArray)
+    clear();
+});
+
+
+$('body').on('click', '.clear',function(){
+    clear() ;
+});
+
+
+  
+
 function pushWaitlist() {
 
     if (serverName = $('#guestName').val() == '') {
         return false;
     }
     guestName = $('#guestName').val();
-    partysize = $('#partySize').val();
+    partySize = $('#partySize').val();
 
     var newguest = new Guestinfo(guestName, partySize);
     waitList.push(newguest);
+    console.log(waitList);
     $('#guestName').val('');
     $('#partySize').val('');
     $("#waitlist").html('');
     $('#waitlist_display').empty();
     for (i = 0; i < waitList.length; i++) {
-        var displayWaitlist = $('<tr>');
+        var displayWaitList = $('<tr>');
 
-        displayWaitlist.attr('waitlist_display', waitList[i].guestname);
-        displayWaitlist.append('<td>' + waitList[i].guestName + '</td>');
-        displayWaitlist.append('<td>' + waitList[i].partySize + '</td>');
-        displayWaitlist.append('<td>' + '<button  data-index=' + i + ' type="button" class="assign btn btn-primary" data-dismiss="modal">' + 'Assign</button>' + '</td>');
-        displayWaitlist.append('<td>' + '<button  data-index=' + i + ' type="button" class="clear btn btn-primary" data-dismiss="modal">' + 'Clear</button>' + '</td>');
+         displayWaitList.attr('waitlist_display', waitList[i].guestName);
+         displayWaitList.append('<td>' + waitList[i].guestName + '</td>');
+         displayWaitList.append('<td>' + waitList[i].partySize + '</td>');
+         displayWaitList.append('<td>' + '<button  data-index=' + i + ' type="button" class="assign btn btn-primary" data-dismiss="modal">' + 'Assign</button>' + '</td>');
+         displayWaitList.append('<td>' + '<button  data-index=' + i + ' type="button" class="clear btn btn-primary" data-dismiss="modal">' + 'Clear</button>' + '</td>');
 
 
+        $('#waitlist_display').append( displayWaitList);
 
-        $('#waitlist_display').append(displayWaitlist);
-
+        // for (i = 0; i < waitList.length; i++) {
+        //     var DisplayWaitList = $('<tr>');
+    
+        //     DisplayWaitList.attr('waitlist_display', waitList[i].guestname);
+        //     DisplayWaitList.append('<td>' + waitList[i].guestName + '</td>');
+        //     DisplayWaitList.append('<td>' + waitList[i].partysize + '</td>');
+        //     DisplayWaitList.append('<td>' + '<button  data-index=' + i + ' type="button" class="assign btn btn-primary" data-dismiss="modal">' + 'Assign</button>' + '</td>');
+        //     DisplayWaitList.append('<td>' + '<button  data-index=' + i + ' type="button" class="clear btn btn-primary" data-dismiss="modal">' + 'Clear</button>' + '</td>');
+    
+    
+    
+        //     $('#waitlist_display').append(DisplayWaitList);
+    
 
     };
 };
@@ -156,7 +176,7 @@ function pushWaitlist() {
 function openTables() {
     guestName = $('#guestName').val();
     partySize = $('#partySize').val();
-    var newguest = new guestInfo(guestName, partySize);
+    var newguest = new Guestinfo(guestName, partySize);
     guestArray.push(newguest);
     newguest.setGuestInfo();
     newguest.showHost();
@@ -166,8 +186,8 @@ function openTables() {
 
 };
 
-$('#wait').on('click', function () {
-
+$('#wait').on('click', function (event) {
+    event.preventDefault();
     pushWaitlist();
 
 
@@ -179,8 +199,7 @@ $('#tables').on('click', function () {
 
 
 
-
-        $('#serverSelect').append('<option id=' + x + 'picserver=' + '>' + server[i].name + '</option>');
+        $('#serverSelect').append('<option id=' + x + '>' + server[i].name + '</option>');
         x++;
 
     };
@@ -189,28 +208,29 @@ $('#tables').on('click', function () {
 
 function signInServer() {
 
+    
+
+    console.log("I am inside signInServer");
     serverName = $('#serverNames').val();
     serverPin = $('#serverPin').val();
     timeOff = $('#timeOff').val();
 
     var newserver = new Server(serverName, time, serverPin, timeOff);
-    server.push(newserver)
+    server.push(newserver);
+    console.log(newserver);
+
+
+    // var checkIn = $('<tr>');
+    // checkIn.attr('id', serverName);
 
 
 
+    // checkIn.append('<td serverinfo=' + serverName.name + '>' + newserver.name + '</td>');
 
+    // checkIn.append('<td >' + newserver.timeIn + '</td>');
+    // checkIn.append('<td serverinfo=' + newserver.name + '>' + newserver.timeOut + '</td>');
 
-    var checkIn = $('<tr>');
-    checkIn.attr('id', serverName);
-
-
-
-    checkIn.append('<td serverinfo=' + serverName.name + '>' + newserver.name + '</td>');
-
-    checkIn.append('<td >' + newserver.timeIn + '</td>');
-    checkIn.append('<td serverinfo=' + newserver.name + '>' + newserver.timeOut + '</td>');
-
-    $('#list1').append(checkIn);
+    // $('#list1').append(checkIn);
 
     serverName = $('#serverNames').val('');
     serverPin = $('#serverPin').val('');
@@ -219,19 +239,31 @@ function signInServer() {
 };
 
 function DisplayMain() {
-    $('.seats').empty();
-    for (i = 0; i < server.length; i++) {
-
-        var displayServerMain = $('<table class="table">');
-        displayServerMain.attr('id', server[i].name);
-
-        displayServerMain.append('<thead>' + '<tr>' + '<th scope="col">' + server[i].name + '</th>' + '<th scope="col">' + server[i].timeOut + '</th>' + '</tr>' + '</thead>');
-
-        $('.seats').append(displayServerMain);
-
+    
+    
+        for (i = 0; i < server.length; i++) {
+            if (server[i].displayToHome == false) {
+                console.log(server[i].name);
+                var displayServerMain = $('<table class="table">');
+                displayServerMain.attr('id', server[i].name);
+    
+                displayServerMain.append('<thead>' +
+                    '<tr>' + '<th class="serverName">'
+                    + server[i].name
+                    + '</th>' +
+                    '<th class="serverStats">' + '</th>'
+                    + '<th>Tables</th>' + '<th class="serverStats">' + '</th>'
+                    + '  <th>Guests</th>' + '<th class="serverOffShift">Off Shift at '
+                    + server[i].timeOut + '</th>'
+                    + '</tr>' + '</thead>' + '<tbody> <tr class= '  + '>'
+                    + '<td colspan="6" class= ' + server[i].name +'>');
+    console.log(displayServerMain);
+                $('.overview').append(displayServerMain);
+                server[i].displayToHome = true;
+                
+            };
+        };
     };
-};
-
 function signServerOut() {
     if (serverName = $('#serverNames').val() == '') {
         return;
@@ -252,22 +284,23 @@ function signServerOut() {
     timeOff = $('#timeOff').val('');
 };
 
-$('#signin').on('click', function () {
-    $('#serverinput').modal('hide');
+$('#signIn').on('click', function () {
+     
+    $('#serverAdmin').modal('hide');
     signInServer();
     DisplayMain();
 
 });
 
-$('body').on('click', '#signout', function () {
-    $('#serverinput').modal('hide')
+$('body').on('click', '#signOut', function () {
+    $('#serverAdmin').modal('hide')
 
 
     signServerOut();
 
 });
 
-$('#seewait').on('click', function () {
+$('#viewWaitList').on('click', function () {
     $('#waitlist').html('');
     $('#waitlist_display').empty();
     for (i = 0; i < waitList.length; i++) {
@@ -314,8 +347,11 @@ function TableNServer(server, table, guest, party) {
     this.serversSelect = server;
     this.tableSelect = table;
     this.theNameGuest = guest;
-    this.thePartySize = party;
+    this.sizeOfParty = party;
 
+    this.console =function(){
+        console.log(TableNServer.sizeOfParty);
+    }
     //    this.displaySeatingInfo = function(){
     //        var display=$('<p> The' + theNameGuest +' party will be served by <br> '+ serversSelect+'<br>'+ 'at <br>' + tableSelect+ '</p>');
     //        $('#guest_server_info').html(display);
@@ -323,15 +359,45 @@ function TableNServer(server, table, guest, party) {
 };
 // set the table array selcted to true dropdown
 function seatingTheGuest() {
-    $('#assignTable').modal('hide');
-    var selectedServer = $('#serverSelect').val();
+    $("#assignTable").modal("hide");
+    var selectedServer = $("#serverSelect").val();
     var selectedTable = $('#selectTable').val();
-    var TableAndGuestAndServer = new TableNServer(selectedServer, selectedTable, guestArray[0].guestName, guestArray[0].partySize);
-    // createdServerNGuest.push(TableAndGuestAndServer);
-    var display = $('<p> The ' + TableAndGuestAndServer.theNameGuest + ' party will be served by <br> ' + selectedServer + '<br>' + 'at table <br>' + selectedTable + '</p>');
-    console.log(TableAndGuestAndServer);
-    $('#guestServerInfo').html(display);
-    for (i = 0; i < tableArray.length; i++) {
+for(i =0;i < guestArray.length; i++){
+PartyName = guestArray[i].guestName;
+sizeOfTheParty = guestArray[i].partySize;
+};
+//guestArray[0].guestName, guestArray[0].partysize
+    var TableAndGuestAndServer = new TableNServer(selectedServer, selectedTable,PartyName,sizeOfTheParty);
+    createdServerNGuest.push(TableAndGuestAndServer);
+    console.log(createdServerNGuest.sizeOfParty);
+    console.log(guestArray);
+    console.log(createdServerNGuest[0].tableSelect);
+    console.log(createdServerNGuest);
+    for(i =0; i <createdServerNGuest.length;i++){
+tableAssign =createdServerNGuest[i].tableSelect;
+numPeople =createdServerNGuest[i].thePartySize;
+    };
+    var addTableButton = $('<a  href="## clear table ##" class="tableButton pictureTable" value=' +tableAssign+ '>' +
+        '<span class="tablenum">' + tableAssign  + '</span>'+
+// '<span class="seatedGuests">' + numPeople + '</span>'+
+'</a>'+ '</td>');
+$('.' +selectedServer).append(addTableButton);
+console.log(tableAssign);
+console.log(numPeople);
+if (tableAssign === serverName) {
+    server.splice(i, 1);
+};
+ //   var display = $('<p> The ' + TableAndGuestAndServer.theNameGuest + ' party will be served by <br> ' + selectedServer + '<br>' + 'at table <br>' + selectedTable + '</p>');
+    // <td colspan="6">
+    //           <a href="## clear table ## " class="tableButton">
+    //             <span class="tableNumber">12</span>
+    //             <span class="seatedPatrons">4</span>
+    //           </a>
+    //         </td>
+    //       </tr> 
+    //     </tbody>
+  //   $('#guest_server_info').html(display);
+      for (i = 0; i < tableArray.length; i++) {
         if (tableArray[i].tableNum == selectedTable) {
             tableArray[i].dropdown = true;
         };
@@ -340,6 +406,15 @@ function seatingTheGuest() {
     openResturant();
 };
 
+
+
+$('body').on('click','.pictureTable',function(){
+   
+
+
+    console.log($(this).val());
+ 
+})
 
 
 
