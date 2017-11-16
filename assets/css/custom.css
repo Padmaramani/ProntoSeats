@@ -1,10 +1,10 @@
-/* 
+/*
 04 css :: chris cote
 */
 
 html {
     margin: 0;
-	padding: 0;
+    padding: 0;
     height: 100%;
 }
 
@@ -25,7 +25,7 @@ body {
 .header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border: 2px solid #999999;            
+    border: 2px solid #999999;
     background-color: #ffffff;
     opacity: 0.9;
     filter: alpha(opacity=90);
@@ -38,7 +38,7 @@ body {
 
 .weather {
     margin: 20px 0 0 0;
-    padding: 0;    
+    padding: 0;
 }
 
 .time {
@@ -49,7 +49,7 @@ body {
     color: #666666;
 }
 
-.overview{
+.overview {
     margin: 5px 0 0 0;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -68,17 +68,15 @@ body {
     clear: both;
 }
 
-
-
 .panel {
     border-left: 2px solid #999999;
-    border-right: 2px solid #999999;    
+    border-right: 2px solid #999999;
     background-color: #ffffff;
     margin: 0;
     padding: 10px 0 20px 20px;
     opacity: 0.9;
     filter: alpha(opacity=90);
-    zoom: 1;   
+    zoom: 1;
     border-radius: 0;
     min-height: 200px;
 }
@@ -92,13 +90,12 @@ body {
     min-height: 200px;
     opacity: 1.0;
     filter: alpha(opacity=100);
-    zoom: 1;   
+    zoom: 1;
     border-radius: 0;
     border-top: 2px solid #999999;
     margin: 20px 0 0 0;
     padding: 20px 0;
 }
-
 
 .table {
     margin: 25px 0;
@@ -110,14 +107,18 @@ thead {
     background-color: #90979f;
     color: #ffffff;
     font-weight: bold;
+    font-size: 15px;
 }
 
 thead .serverName {
     background-color: #ffffff;
     color: #333333;
     font-weight: bold;
-    padding: 0 20px 0 10px;
+    padding: 0 20px 6px 10px;
     width: 200px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
 }
 
 thead .serverOffShift {
@@ -130,7 +131,7 @@ thead .serverOffShift {
 }
 
 thead .serverStats {
-    background: url(../img/bgServerStats.png) no-repeat left;     
+    background: url(../img/bgServerStats.png) no-repeat left;
     text-align: center;
     width: 40px;
     color: #ffffff;
@@ -145,7 +146,7 @@ tbody {
 
 .tableButton {
     float: left;
-    background: url(../img/bgTableButton.png) no-repeat left;     
+    background: url(../img/bgTableButton.png) no-repeat left;
     height: 60px;
     width: 60px;
     font-size: 12px;
@@ -156,31 +157,32 @@ tbody {
 }
 
 .tableButton:hover {
-    background: url(../img/bgTableButton_hover.png) no-repeat left; 
-    text-decoration: none;    
+    background: url(../img/bgTableButton_hover.png) no-repeat left;
+    text-decoration: none;
     color: #333333;
 }
+
 .tableButton .tableNumber {
     margin: 10px 0 0 8px;
 }
 
-.tableButton .seatedPatrons {
+.tableButton .seatedGuests {
     margin: 12px 0 0 14px;
 }
 
 .footer {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    border: 2px solid #999999;  
+    border: 2px solid #999999;
     background-color: #ffffff;
     opacity: 0.9;
     filter: alpha(opacity=90);
     zoom: 1;
     width: 100%;
-    padding: 0;
+    padding: 5px 0;
     margin: 0;
+    text-align: center;
 }
-
 
 .weatherChannel a {
     background-image: url(../img/weatherChannel.png);
@@ -201,7 +203,7 @@ tbody {
     width: 60px;
     display: block;
     float: right;
-    margin: 10px 30px 0 0; 
+    margin: 10px 30px 0 0;
 }
 
 .googleMaps a:hover {
@@ -214,7 +216,7 @@ tbody {
     width: 60px;
     display: block;
     float: right;
-    margin: 10px 30px 0 0; 
+    margin: 10px 30px 0 0;
 }
 
 .serverAdmin a:hover {
@@ -227,7 +229,7 @@ tbody {
     width: 60px;
     display: block;
     float: right;
-    margin: 10px 30px 0 0;   
+    margin: 10px 30px 0 0;
 }
 
 .viewWaitList a:hover {
@@ -237,7 +239,7 @@ tbody {
 label {
     font-size: 18px;
     color: #333333;
-    margin: 0 0 5px 0;
+    margin: 5px 0 5px 0;
 }
 
 input {
@@ -248,25 +250,26 @@ input {
 }
 
 #map {
-  position: static;
-  overflow: visible;
-  height: 400px;
-  width: 720px;
-  margin: 0px auto;
-  margin-top: 20px;
+    position: static;
+    overflow: visible;
+    height: 400px;
+    width: 100%;
+    margin: 0px auto;
+    margin-top: 20px;
+    border: 2px solid #cccccc;
 }
 
 #imgid {
     float: left;
     margin: 2px 0 0 20px;
     height: 40px;
-    width: 40px;    
+    width: 40px;
 }
 
 .temp {
     float: left;
     margin: 0;
-    padding: 10px 0 0 0;    
+    padding: 10px 0 0 0;
 }
 
 .guestInfo {
@@ -281,34 +284,27 @@ input {
 
 .btn-secondary {
     height: 50px;
-    width: 148px;
+    width: 158px;
     font-size: 24px;
-    margin: 22px 0 0 25px;
-
+    margin: 30px 0 0 25px;
 }
 
-
 .formy {
-    border-bottom: 2px solid #999999;   
+    border-bottom: 2px solid #999999;
     background-color: #cccccc;
-    min-height: 120px;  
+    min-height: 120px;
     border-radius: 0;
 }
 
-#inputCity {
-    clear: both;
+h4 {
+    margin: 20px 0;
+    color: #666666;
 }
 
+.modal-footer {
+    margin: 20px 0 0 0;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.tablenum {
+    margin: 10px;
+}
